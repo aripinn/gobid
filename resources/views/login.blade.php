@@ -21,14 +21,14 @@
               <form>
                 <!-- Email input -->
                 <div class="form-floating mb-4">
-                  <input type="email" id="email" class="form-control form-control-lg"
+                  <input type="email" id="email" class="form-control form-control"
                     placeholder="Enter username" />
                   <label class="form-label" for="email">Username</label>
                 </div>
       
                 <!-- Password input -->
                 <div class="form-floating mb-3">
-                  <input type="password" id="password" class="form-control form-control-lg"
+                  <input type="password" id="password" class="form-control form-control"
                     placeholder="Enter password" />
                   <label class="form-label" for="password">Password</label>
                 </div>
