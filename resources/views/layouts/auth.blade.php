@@ -12,8 +12,6 @@
     <title>@yield('title') | GoBid</title>
 </head>
 <body>
-    @include('partials.navbar')
-
     <div class="container">
         @yield('app')
     </div>
