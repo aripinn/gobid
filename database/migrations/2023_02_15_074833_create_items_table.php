@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Validation\Rules\Enum;
 
 return new class extends Migration
 {
@@ -14,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('username')->unique();
-            $table->string('password');
-            $table->string('phone')->nullable();
-            $table->enum('role', ['member', 'admin', 'employee']);
-            $table->rememberToken();
             $table->timestamps();
+            $table->bigInteger('id_user');
+            $table->string('name');
+            $table->integer('initial_price');
+            $table->text('desc');
+            $table->string('img');
+            $table->enum('status', ['available','on_auction','sold']);
         });
     }
 
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('items');
     }
 };
