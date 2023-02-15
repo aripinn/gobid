@@ -34,7 +34,7 @@
     
               <!-- Phone input -->
               <div class="form-floating mb-3">
-                <input type="number" id="phone" class="form-control"
+                <input type="text" id="phone" class="form-control"
                   placeholder="Enter phone number" required/>
                 <label class="form-label" for="phone">Phone Number</label>
               </div>
