@@ -13,6 +13,14 @@
 
       {{-- Login Card --}}
       <div class="col-md-8 col-lg-6 offset-lg-1">
+        {{-- Register success alert --}}
+        @if (session()->has('registerSuccess'))
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+          {{ session('registerSuccess') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+        
         <div class="card border-light shadow px-5 py-4">
           <h1 class="mb-4 fw-bold">Login</h1>
           <form>
