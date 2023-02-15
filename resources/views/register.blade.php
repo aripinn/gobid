@@ -7,7 +7,7 @@
       <div class="row d-flex justify-content-center align-items-center text-center h-100">
   
         {{-- Register Card --}}
-        <div class="col-5">
+        <div class="col-md-10 col-lg-5">
           <div class="card border-light shadow px-5 py-4">
             <h1 class="mb-4 fw-bold">Register</h1>
             <form>
