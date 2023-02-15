@@ -50,8 +50,8 @@
               </div>
 
               {{-- Buttons --}}
-              <div class="text-center text-lg-start pt-2">
-                <button type="button" class="btn btn-primary btn-lg d-flex justify-content-center align-items-center gap-2 fw-semibold" style="padding-left: 2rem; padding-right: 2rem;">
+              <div class="text-center pt-2">
+                <button type="button" class="btn btn-primary btn-lg d-flex justify-content-center align-items-center gap-2 fw-semibold mx-auto" style="padding-left: 2rem; padding-right: 2rem;">
                   <span>Register</span>
                   <iconify-icon inline icon="jam:write"></iconify-icon>
                 </button>

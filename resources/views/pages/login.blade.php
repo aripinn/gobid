@@ -7,7 +7,7 @@
     <div class="row d-flex justify-content-center align-items-center h-100">
       {{-- Image --}}
       <div class="col-md-9 col-lg-6 col-xl-4">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+        <img src="{{ asset('assets/img/GoBid.svg') }}"
           class="img-fluid" alt="GoBid">
       </div>
 
