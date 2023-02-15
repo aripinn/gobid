@@ -6,13 +6,13 @@
   <div class="container-fluid h-custom">
     <div class="row d-flex justify-content-center align-items-center h-100">
       {{-- Image --}}
-      <div class="col-md-9 col-lg-6 col-xl-4">
+      <div class="col-md-6 col-lg-4">
         <img src="{{ asset('assets/img/GoBid.svg') }}"
           class="img-fluid" alt="GoBid">
       </div>
 
       {{-- Login Card --}}
-      <div class="col-md-8 col-lg-6 col-xl-6 offset-xl-1">
+      <div class="col-md-8 col-lg-6 offset-lg-1">
         <div class="card border-light shadow px-5 py-4">
           <h1 class="mb-4 fw-bold">Login</h1>
           <form>
