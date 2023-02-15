@@ -1,10 +1,22 @@
-<div class="container-fluid border-secondary border-top">
-  <footer class="my-4">
-    <ul class="nav justify-content-center pb-3 mb-3">
-      <li class="nav-item"><a href="/" class="nav-link px-2 text-dark">Home</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-dark">Auctions</a></li>
-      <li class="nav-item"><a href="#" class="nav-link px-2 text-dark">My Bid</a></li>
+<div class="container-fluid border-top px-5">
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4">
+    <div class="col-md-4 d-flex align-items-center">
+      {{-- <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+        <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+      </a> --}}
+      <span class="mb-3 mb-md-0 text-muted">&copy; 2023 GoBid, Inc</span>
+    </div>
+
+    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+      <li class="ms-3"><a class="text-muted" href="#">
+        <iconify-icon inline icon="mdi:twitter" width="32"></iconify-icon>
+      </a></li>
+      <li class="ms-3"><a class="text-muted" href="#">
+        <iconify-icon inline icon="mdi:instagram" width="32"></iconify-icon>  
+      </a></li>
+      <li class="ms-3"><a class="text-muted" href="#">
+        <iconify-icon inline icon="ic:baseline-facebook" width="32"></iconify-icon>
+      </a></li>
     </ul>
-    <p class="text-center text-muted">&copy; 2023 GoBid, Inc</p>
   </footer>
 </div>

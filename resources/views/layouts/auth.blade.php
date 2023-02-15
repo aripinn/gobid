@@ -21,9 +21,9 @@
     @include('includes.footer')
     
     {{-- Bootsrap --}}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    {{-- Iconify --}}
-    {{-- <script src="https://code.iconify.design/iconify-icon/1.0.5/iconify-icon.min.js"></script> --}}
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> --}}
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+    {{-- Iconify --}}
+    <script src="https://code.iconify.design/iconify-icon/1.0.5/iconify-icon.min.js"></script>
 </body>
 </html>
