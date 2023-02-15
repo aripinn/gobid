@@ -45,7 +45,6 @@
                     <option selected>Select role</option>
                     <option value="member">Member</option>
                     <option value="admin">Admin</option>
-                    <option value="employee">Employee</option>
                 </select>
                 <label class="form-label" for="role">Role</label>
               </div>
