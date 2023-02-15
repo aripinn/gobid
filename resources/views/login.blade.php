@@ -16,20 +16,21 @@
         <div class="card border-light shadow px-5 py-4">
           <h1 class="mb-4 fw-bold">Login</h1>
           <form>
-            <!-- Email input -->
+            <!-- Username input -->
             <div class="form-floating mb-4">
-              <input type="email" id="email" class="form-control"
-                placeholder="Enter username" />
-              <label class="form-label" for="email">Username</label>
+              <input type="text" id="username" class="form-control"
+                placeholder="Enter username" required/>
+              <label class="form-label" for="username">Username</label>
             </div>
   
             <!-- Password input -->
             <div class="form-floating mb-3">
-              <input type="password" id="password" class="form-control form-control"
-                placeholder="Enter password"/>
+              <input type="password" id="password" class="form-control"
+                placeholder="Enter password" required/>
               <label class="form-label" for="password">Password</label>
             </div>
   
+            {{-- Buttons --}}
             <div class="text-center text-lg-start pt-2">
               <button type="button" class="btn btn-primary btn-lg d-flex justify-content-center align-items-center gap-1 fw-semibold" style="padding-left: 2rem; padding-right: 2rem;">
                 <span>Login</span>
