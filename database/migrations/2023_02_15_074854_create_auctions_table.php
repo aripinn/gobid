@@ -16,6 +16,12 @@ return new class extends Migration
         Schema::create('auctions', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->bigInteger('id_item');
+            $table->timestamp('start_date');
+            $table->timestamp('end_date');
+            $table->integer('final_price');
+            $table->bigInteger('id_user');
+            $table->enum('status', ['open', 'closed']);
         });
     }
 
