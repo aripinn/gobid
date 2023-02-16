@@ -23,8 +23,8 @@ class CheckRole
             if( $user == $role){
                 return $next($request);
             }
-        }  abort(403);
-
-        return $next($request);
+        }
+        
+        abort(403);
     }
 }

@@ -29,4 +29,4 @@ Route::get('/register', [RegisterController::class, 'index'])->middleware('guest
 Route::post('/register', [RegisterController::class, 'create']);
 
 // Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('role:staff,admin');
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth', 'isAdmin');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth', 'role:staff,admin');
