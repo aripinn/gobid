@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     public function index(){
-        return view('pages.login', []);
+        return view('pages.login');
     }
 
     public function authenticate(Request $request){
@@ -19,7 +19,21 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)){
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+
+            $user = AUth::user();
+            switch($user->role){
+                case 'admin':
+                    return redirect()->intended('/dashboard');
+                    break;
+                case 'staff':
+                    return redirect()->intended('/dashboard');
+                    break;
+                case 'member':
+                    return redirect('/');
+                    break;
+                default:
+                    return redirect('/login');
+            }
         }
 
         return back()->with('loginFailed', 'Login failed!');
@@ -27,11 +41,8 @@ class LoginController extends Controller
 
     public function logout(Request $request){
         Auth::logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
-
         return redirect('/login');
     }
 }
