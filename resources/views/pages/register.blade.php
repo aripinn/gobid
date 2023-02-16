@@ -55,21 +55,6 @@
                 </div>
                 @enderror
               </div>
-    
-              <!-- Role select -->
-              <div class="form-floating mb-3">
-                <select type="text" name="role" id="role" class="form-select  @error('role') is-invalid @enderror">
-                  <option selected disabled hidden>Select role</option>
-                  <option value="member">Member</option>
-                  <option value="admin">Admin</option>
-                </select>
-                <label class="form-label" for="role">Role<span class="text-danger">*</span></label>
-                @error('role')
-                <div class="invalid-feedback">
-                  {{ $message }}
-                </div>
-                @enderror
-              </div>
 
               {{-- Buttons --}}
               <div class="text-center pt-2">

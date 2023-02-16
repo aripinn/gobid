@@ -17,13 +17,15 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'username' => 'required|min:3|max:255|unique:users',
             'password' => 'required|min:8|max:255',
-            'phone' => 'max:25',
-            'role' => 'required'
+            'phone' => 'max:25'
+            // 'role' => 'required'
         ]);
         
         // $validatedData['password'] = bcrypt($validatedData['password']);
         $validatedData['password'] = Hash::make($validatedData['password']);
         // Those two are the same
+        
+        $validatedData['role'] = 'member';
 
         User::create($validatedData);
         return redirect('/login')->with('registerSuccess','Registration successful!');
