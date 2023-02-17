@@ -15,13 +15,13 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->bigInteger('id_user');
+            // $table->foreignId('user_id');
             $table->string('name');
             $table->integer('initial_price');
             $table->text('desc');
             $table->string('img');
-            $table->enum('status', ['available','on_auction','sold']);
+            // $table->enum('status', ['available','onAuction','sold']);
+            $table->timestamps();
         });
     }
 
