@@ -16,6 +16,10 @@ class User extends Authenticatable
         return $this->hasMany(User::class);
     }
 
+    public function auctions(){
+        return $this->hasMany(Auction::class);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
