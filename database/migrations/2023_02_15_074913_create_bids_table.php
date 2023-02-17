@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('bids', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->bigInteger('id_user');
-            $table->bigInteger('id_auction');
+            $table->foreignId('user_id');
+            $table->foreignId('auction_id');
             $table->integer('bid_price');
         });
     }
