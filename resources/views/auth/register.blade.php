@@ -1,135 +1,75 @@
-{{-- <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
-
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
-
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
-
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
-            </div>
-
-            <!-- userName -->
-            <div>
-                <x-label for="username" :value="__('Username')" />
-
-                <x-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autofocus />
-            </div>
-
-            <!-- phone Address -->
-            <div class="mt-4">
-                <x-label for="phone" :value="__('Telepon')" />
-
-                <x-input id="phone" class="block mt-1 w-full" type="number" name="phone" :value="old('phone')" required />
-            </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout> --}}
-
 @extends('layouts.auth')
-@section('judul', 'Register')
+@section('title', 'Register')
 
 @section('app')
+<section class="vh-100">
+  <div class="container-fluid h-custom">
+    <div class="row d-flex justify-content-center align-items-center h-100">
 
-<div class="bg w-100">
-  {{-- <!-- Headline --> --}}
-  <div class="Headline text-light d-flex justify-content-center">
-    <h1 class="H1_orange py-3">Buat akun Terlebih dahulu !</h1>
-  </div>
-    
-  {{-- <!-- Register card --> --}}
-  <section class="d-flex justify-content-center">
-        <div class="col-lg-6 mb-1">
-          <div class="card shadow-sm mb-5">
-            <div class="card-body">
-              <form action="{{ route('register') }}" method="POST">
-                @csrf
-                {{-- <!-- Name input --> --}}
-                <div class="form-floating mb-2">
-                  <input type="text" class="form-control" id="floatingInput" name="name" placeholder="name">
-                  <label for="floatingInput">Name</label>
-                </div>
-                <p class="small mt-1 pt-1 fw-regular text-muted"><img src="{{ asset('assets/icons/feather_BBBBBB/alert-circle.svg') }}"> Masukan nama asli anda </p>
-  
-                {{-- <!-- Username input --> --}}
-                <div class="form-floating mb-2">
-                  <input type="text" class="form-control" id="floatingInput" name="username" placeholder="username">
-                  <label for="floatingInput">Username</label>
-                </div>
-                <p class="small mt-1 pt-1 fw-regular text-muted"><img src="{{ asset('assets/icons/feather_BBBBBB/alert-circle.svg') }}"> Masukan username</p>
-  
-                {{-- <!-- Notlpn input --> --}}
-                <div class="form-floating mb-2">
-                  <input type="number" class="form-control" id="floatingInput" name="phone" placeholder="nomertlp">
-                  <label for="floatingInput">Nomer Telepone</label>
-                </div>
-                <p class="small mt-1 pt-1 fw-regular text-muted"><img src="{{ asset('assets/icons/feather_BBBBBB/alert-circle.svg') }}"> Masukan no telepone</p>
-  
-  
-                {{-- <!-- Password input --> --}}
-                <div class="form-floating mb-2">
-                  <input type="password" class="form-control" id="floatingInput" name="password" placeholder="password">
-                  <label for="floatingInput">Password</label>
-                </div>
-                <p class="small mt-1 pt-1 fw-regular text-muted"><img src="{{ asset('assets/icons/feather_BBBBBB/alert-circle.svg') }}"> Password menggunakan huruf kapital </p>
-  
-                
-                {{-- <!-- Submit & back button --> --}}
-                <div class="container p-0">
-                  <div class="d-flex w-100 gap-2 flex-column flex-md-row">
-                      <button type="submit" class="col-12 col-md-6 btn btn-success btn-block text-light py-3 fw-bold">Sign up <img src="{{ asset('assets/icons/feather_white/log-in.svg') }}"></button>
-                      <a href="/login" class="col-12 col-md-6 btn btn-outline-success py-3 fw-bold">Back <img src="{{ asset('assets/icons/feather_328D2A/corner-up-left.svg') }}"></a>
-                  </div>
-                  <p class="small mt-1 pt-1 fw-semibold">Already have an account?
-                    <a href="/login" class="link-success">Login</a>
-                  </p>
-                </div>
-              </form>
+      {{-- Register Card --}}
+      <div class="col-md-10 col-lg-5">
+        <div class="card border-light shadow px-5 py-4">
+          <h1 class="mb-4 fw-bold text-center">Register</h1>
+          <form action="{{ route('register') }}" method="POST">
+            @csrf
+            <!-- Name input -->
+            <div class="form-floating mb-3">
+              <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" placeholder="Enter username">
+              <label class="form-label" for="name">Name<span class="text-danger">*</span></label>
+              @error('name')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
             </div>
-          </div>
+  
+            <!-- Username input -->
+            <div class="form-floating mb-3">
+              <input type="text" name="username" id="username" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" placeholder="Enter username"/>
+              <label class="form-label" for="username">Username<span class="text-danger">*</span></label>
+              @error('username')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+  
+            <!-- Password input -->
+            <div class="form-floating mb-3">
+              <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Enter password"/>
+              <label class="form-label" for="password">Password<span class="text-danger">*</span></label>
+              @error('password')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+  
+            <!-- Phone input -->
+            <div class="form-floating mb-3">
+              <input type="number" name="phone" id="phone" class="form-control  @error('phone') is-invalid @enderror" value="{{ old('phone') }}" placeholder="Enter phone number"/>
+              <label class="form-label" for="phone">Phone Number</label>
+              @error('phone')
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
+              @enderror
+            </div>
+
+            {{-- Buttons --}}
+            <div class="text-center pt-2">
+              <button type="submit" class="btn btn-primary btn-lg d-flex justify-content-center align-items-center gap-2 fw-semibold mx-auto" style="padding-left: 2rem; padding-right: 2rem;">
+                <span>Register</span>
+                <iconify-icon inline icon="jam:write"></iconify-icon>
+              </button>
+              <p class="small mt-3 pt-1 fw-semibold">Already have an account?
+                <a href="{{ route("login") }}" class="link-primary text-decoration-none">Login</a>
+              </p>
+            </div>
+          </form>
         </div>
-  </section>
-
-</div>
-
-
+      </div>
+    </div>
+  </div>
+</section>
 @endsection

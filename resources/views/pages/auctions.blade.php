@@ -7,28 +7,22 @@
 {{-- Headline --}}
 <div class="container p-0">
     <div class="d-flex justify-content-between align-items-center px-3 mb-3">
-        <div class="Headline_home text-light d-flex justify-content text-align-left py-3">
-            <h1 class="H1_ijo">Auctions</h1>
-        </div>
-        <div class="browese">
-          <a href="/" class="btn btn-outline-success btn-block fw-bold">
-            Back to Home
-          </a>
+            <h2 class="text-dark mt-4 fw-emibold">All Auctions</h2>
         </div>
     </div>
 </div>
 {{-- Search --}}
 <div class="container">
-  <div class="card bg-success-subtle border-success p-1 my-3 mb-4">
-        <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Cari Hewan lelang yang anda inginkan" aria-label="Search">
-            <button class="btn btn-success d-flex" type="submit"><img src="{{ asset('assets/icons/feather_FFFFFF/search.svg') }}">
-              <span class="ms-1">
-                  Search
-              </span>
-            </button>
-        </form>
-    </div>
+  <div class="card border-dark p-1 my-3 mb-4">
+    <form action="" method="post" class="d-flex">
+      @csrf
+      <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-primary d-flex" type="submit">
+        <iconify-icon icon="ic:outline-search" style="color: white;" width="24"></iconify-icon>
+        <span class="ms-1">Search</span>
+      </button>
+    </form>
+  </div>
 </div>
 {{-- Cards --}}
 <section>

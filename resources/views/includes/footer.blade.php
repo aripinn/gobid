@@ -1,73 +1,22 @@
-<!-- Footer -->
-<footer class="text-center text-lg-start bg-light text-muted border-top w-100 position-static bottom-0">
-    <!-- Right -->
-    <div>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-facebook-f"></i>
+<div class="container-fluid border-top px-5">
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-3">
+    <div class="col-md-4 d-flex align-items-center">
+      <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+        <span class="fs-4 fw-bold mb-4 text-black">GoBid</span>
       </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-twitter"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-google"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a href="" class="me-4 text-reset">
-        <i class="fab fa-github"></i>
-      </a>
+      <span class="mb-3 mb-md-0 text-muted">&copy; 2023 Aripin</span>
     </div>
-    <!-- Right -->
-  
-  <!-- Section: Social media -->
-  <!-- Section: Links  -->
-  <section class="">
-    <div class="container text-center text-md-start mt-5">
-      <!-- Grid row -->
-      <div class="row mt-3">
-        <!-- Grid column -->
-        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-          <!-- Content -->
-          <h6 class="logo fw-large mb-4 text-black">
-            Animal Auction
-          </h6>
-          <p>
-              Animal Auction adalah website lelang hewan yang terpercaya disini kami menyediakan platform untuk para peternak untuk melelang hewan peliharaannya.
-          </p>
-          <div class="text-left">
-            © 2023 Copyright
-            {{-- <a class="text-reset fw-bold" href="https://.com/">Fariz Ferdiano</a> --}}
-          </div>
-        </div>
-        <!-- Grid column -->
-  
-        <!-- Grid column -->
-        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-          <!-- Links -->
-          <h6 class="text-black fw-bold mb-4">Ikuti kami</h6>
-          <p><img src="{{ asset('assets/icons/feather_328D2A/instagram.svg') }}"> 
-            <a class="text-decoration-none text-muted" href="https://www.instagram.com/f_dyano/" target="_blank" rel="noopener noreferrer">
-              <span class="ms-1">animal_auction</span>
-            </a>
-          </p>
-          <p><img src="{{ asset('assets/icons/feather_328D2A/facebook.svg') }}"> 
-            <a class="text-decoration-none text-muted" href="https://www.instagram.com/f_dyano/" target="_blank" rel="noopener noreferrer">
-              <span class="ms-1">animal_auction</span>
-            </a>
-          </p>
-          <p><img src="{{ asset('assets/icons/feather_328D2A/twitter.svg') }}"> 
-            <a class="text-decoration-none text-muted" href="https://www.instagram.com/f_dyano/" target="_blank" rel="noopener noreferrer">
-              <span class="ms-1">animal_auction</span>
-            </a>
-          </p>
-        </div>
-      </div>
-      <!-- Grid row -->
-    </div>
-  </section>
+
+    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+      <li class="ms-3"><a class="text-muted" href="https://www.instagram.com/arp.n_/" target="_blank" rel="noopener noreferrer">
+        <iconify-icon inline icon="mdi:instagram" width="32"></iconify-icon>  
+      </a></li>
+      <li class="ms-3"><a class="text-muted" href="https://github.com/aripinn" target="_blank" rel="noopener noreferrer">
+        <iconify-icon inline icon="mdi:github" width="32"></iconify-icon>
+      </a></li>
+      <li class="ms-3"><a class="text-muted" href="https://www.linkedin.com/in/aripin-62661b24a/" target="_blank" rel="noopener noreferrer">
+        <iconify-icon inline icon="mdi:linkedin" width="32"></iconify-icon>
+      </a></li>
+    </ul>
   </footer>
-  <!-- Footer -->
+</div>

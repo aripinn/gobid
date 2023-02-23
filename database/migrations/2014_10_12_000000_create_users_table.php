@@ -18,7 +18,7 @@ return new class extends Migration
 
             $table->string('name');
             $table->string('username')->unique();
-            $table->string('phone')->unique();
+            $table->string('phone')->nullable();
             $table->string('password');
             
             $table->rememberToken();

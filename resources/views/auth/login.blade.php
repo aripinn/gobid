@@ -1,120 +1,74 @@
-{{-- <x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
-
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <!-- Email Address -->
-            <div>
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="current-password" />
-            </div>
-
-            <!-- Remember Me -->
-            <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-button class="ml-3">
-                    {{ __('Log in') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout> --}}
-
 @extends('layouts.auth')
-@section('judul', 'Login')
+@section('title', 'Login')
 
 @section('app')
-{{-- Background --}}
-<div class="bg w-100">
-  {{-- Canvas --}}
-    <section class="vh-100">
-      <div class="container-fluid h-custom">
-        <div class=" d-flex justify-content-center align-items-center h-100 overflow-y-hidden">
-          {{-- Image --}}
-          <div class="col-lg-5 d-none d-md-block">
-            <img src="{{ asset('assets/img/ilustrasi_petani.png') }}" class="img-fluid" style="object-fit:cover max-height: 400px" alt="Ilustrasi_petani">
+<section class="vh-100">
+    <div class="container-fluid h-custom">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        {{-- Image --}}
+        <div class="col-md-6 col-lg-4">
+          <img src="{{ asset('assets/img/GoBid.svg') }}"
+            class="img-fluid" alt="GoBid">
+        </div>
+  
+        {{-- Login Card --}}
+        <div class="col-md-8 col-lg-6 offset-lg-1">
+          {{-- Register success alert --}}
+          @if (session()->has('registerSuccess'))
+          <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            {{ session('registerSuccess') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
-    
-          {{-- Login Card --}}
-          <div class="col-md-8 col-lg-5 offset-xl-1">
-            {{-- Headline --}}
-            <div class="Headline text-light d-flex justify-content text-align-left py-3">
-              <h1 class="H1_orange">Login Terlebih dahulu !</h1>
-            </div>
-            {{-- Head line --}}
-            <div class="card shadow-sm">
-              <div class="card-body">
-                  <form action="{{ route('login') }}" method="POST">
-                    @csrf
-                      {{-- <!-- Username input --> --}}
-                      <div class="form-floating mb-2">
-                          <input type="text" class="form-control" id="floatingInput" name="username" placeholder="username" autofocus>
-                          <label for="floatingInput">Username</label>
-                      </div>
-                      <p class="small mt-1 pt-1 fw-regular text-muted"><img
-                              src="{{ asset('assets/icons/feather_BBBBBB/alert-circle.svg') }}"> Masukan username</p>
+          @endif
   
-                      {{-- <!-- Password input --> --}}
-                      <div class="form-floating mb-2">
-                          <input type="password" class="form-control" name="password" id="floatingInput"
-                              placeholder="password">
-                          <label for="floatingInput">Password</label>
-                      </div>
-                      <p class="small mt-1 pt-1 fw-regular text-muted"><img
-                              src="{{ asset('assets/icons/feather_BBBBBB/alert-circle.svg') }}"> Password menggunakan huruf kapital </p>
+          {{--Login failed alert --}}
+          @if (session()->has('loginFailed'))
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ session('loginFailed') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          @endif
   
-                      {{-- <!-- Login & Sign button --> --}}
-                      <div class="container p-0">
-                          <div class="d-flex w-100 gap-2 flex-column flex-md-row">
-                              <button type="submit"
-                                  class="col-12 col-md-6 btn btn-success btn-block text-light py-3 fw-bold">
-                                  <span class="ms-2">Login</span> 
-                                  <img src="{{ asset('assets/icons/feather_white/log-in.svg') }}">
-                              </button>
-                              <a href="{{ route('register') }}" class="col-12  col-md-6 btn btn-outline-success py-3 fw-bold">Registrasi</a>
-                          </div>
-                      </div>
-                  </form>
+          <div class="card border-light shadow px-5 py-4">
+            <h1 class="mb-4 fw-bold">Login</h1>
+            <form action="/login" method="post">
+              @csrf
+              <!-- Username input -->
+              <div class="form-floating mb-4">
+                <input type="text" name="username" id="username" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" placeholder="Enter username" autofocus/>
+                <label class="form-label" for="username">Username</label>
+                @error('username')
+                <div class="invalid-feeddback text-danger">
+                  {{ $message }}
+                </div>
+                @enderror
               </div>
-          </div>
+    
+              <!-- Password input -->
+              <div class="form-floating mb-3">
+                <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror" placeholder="Enter password"/>
+                <label class="form-label" for="password">Password</label>
+                @error('password')
+                <div class="invalid-feeddback text-danger">
+                  {{ $message }}
+                </div>
+                @enderror
+              </div>
+    
+              {{-- Buttons --}}
+              <div class="text-center text-lg-start pt-2">
+                <button type="submit" class="btn btn-primary btn-lg d-flex justify-content-center align-items-center gap-1 fw-semibold" style="padding-left: 2rem; padding-right: 2rem;">
+                  <span>Login</span>
+                  <iconify-icon inline icon="material-symbols:login"></iconify-icon>
+                </button>
+                <p class="small mt-3 pt-1 fw-semibold">Don't have an account?
+                  <a href="{{ route('register') }}" class="link-primary text-decoration-none">Register</a>
+                </p>
+              </div>
+            </form>
           </div>
         </div>
       </div>
-    </section>
-</div>
+    </div>
+  </section>
 @endsection

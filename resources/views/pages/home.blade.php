@@ -8,23 +8,20 @@
 {{-- Banner --}}
 <section>
   <div class="container">
-    <div id="carouselExampleAutoplaying" class="carousel slide shadow-sm rounded-3 " data-bs-ride="carousel">
+    <div id="homeCarousel" class="carousel slide shadow-sm rounded-3 " data-bs-ride="carousel">
       <div class="carousel-inner my-4 rounded-3 md-4">
         <div class="carousel-item active">
-          <img src="{{ asset('assets/img/Carousel_img.png') }}" class="d-block w-100" alt="...">
+          <img src="{{ asset('assets/img/Banner1.png') }}" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-          <img src="{{ asset('assets/img/Carousel_img.png') }}" class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-          <img src="{{ asset('assets/img/Carousel_img.png') }}" class="d-block w-100" alt="...">
+          <img src="{{ asset('assets/img/Banner2.png') }}" class="d-block w-100" alt="...">
         </div>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
@@ -34,13 +31,13 @@
 {{-- Headline --}}
 <div class="container p-0">
   <div class="d-flex justify-content-between align-items-center px-3 mb-3">
-      <div class="Headline_home text-light d-flex justify-content text-align-left py-3">
-          <h1 class="text-start H1_ijo">Lelang yang berlangsung</h1>
+      <div class="d-flex justify-content text-align-left py-3">
+          <h2 class="text-dark">Ongoing Auctions</h2>
       </div>
-      <div class="browese">
+      <div class="browse">
         <a href="/auctions">
-          <a href="auctions" class="btn btn-outline-success btn-block fw-bold">
-              Browse More<img src="">
+          <a href="auctions" class="btn btn-outline-dark btn-block fw-bold">
+              Browse More
           </a>
         </a>
       </div>
