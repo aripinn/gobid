@@ -1,26 +1,59 @@
-body {
-    font-family: 'Inter', sans-serif !important;
-}
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-.divider:after,
-.divider:before {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: #eee;
+body {
+    font-family: 'Alfa Slab One', cursive;
+    font-family: 'Poppins', sans-serif !important;
+}
+.bg {
+    background-image: url("../img/Background.png");
+}
+.logo {
+    font-family: 'Alfa Slab One';
+}
+
+.Headline {
+    font-family: 'Alfa Slab One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 68px;
+    text-align: center;
+    color: #FFFFFF;
+    /* stroke: 3px solid #E98E14; */
+    text-shadow: 6px 8px 0px #E88D13;
+}
+
+.Headline_home {
+    font-family: 'Alfa Slab One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 68px;
+    text-align: center;
+    color: #FFFFFF;
+    /* stroke: 3px solid #E98E14; */
+    text-shadow: 6px 8px 0px #328D2A;
+}
+
+.H1_orange {
+    -webkit-text-stroke: 1px #E88D13;
+    -webkit-text-fill-color: white;
+}
+
+.H1_ijo {
+    -webkit-text-stroke: 1px #328D2A;
+    -webkit-text-fill-color: white;
 }
 
 .h-custom {
     height: 100%;
 }
 
-@media (max-width: 450px) {
+@media (max-height: 100px){
     .h-custom {
         height: 100%;
     }

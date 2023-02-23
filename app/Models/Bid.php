@@ -9,11 +9,18 @@ class Bid extends Model
 {
     use HasFactory;
 
-    public function users(){
+    protected $fillable = [
+        'user_id', 'item_id', 'bid_amount'
+    ];
+
+    public function item()
+    {
+        return $this->belongsTo(Item::class);
+    }
+
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function auctions(){
-        return $this->belongsTo(Auction::class);
-    }
 }

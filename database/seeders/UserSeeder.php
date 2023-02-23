@@ -19,14 +19,35 @@ class UserSeeder extends Seeder
             'name' => 'Aripin',
             'username' => 'arp',
             'password' => bcrypt('arp'),
-            'role' => 'admin'
+            'phone' => '0811',
         ]);
-
+        
+        User::create([
+            'name' => 'Shafwana Musyaffa',
+            'username' => 'wana',
+            'password' => bcrypt('wana'),
+            'phone' => '0812',
+        ]);
+        
+        User::create([
+            'name' => 'Padli Septiana',
+            'username' => 'icarus',
+            'password' => bcrypt('icarus'),
+            'phone' => '0813',
+        ]);
+        
+        User::create([
+            'name' => 'Fariz Ferdiano',
+            'username' => 'dyano',
+            'password' => bcrypt('dyano'),
+            'phone' => '0817',
+        ]);
+        
         User::create([
             'name' => 'Member',
             'username' => 'member',
             'password' => bcrypt('member'),
-            'role' => 'member'
+            'phone' => '0816',
         ]);
     }
 }

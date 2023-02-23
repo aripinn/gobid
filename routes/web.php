@@ -1,11 +1,11 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\HomeController;
-use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\Ajax\UserAjaxController;
+use App\Http\Controllers\Admin\Ajax\AdminAjaxController;
+use App\Http\Controllers\Admin\Ajax\StaffAjaxController;
+use App\Http\Controllers\Admin\ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,14 +18,49 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
+Route::get('/welcome', function () {
+    return view('welcome');
+});
 
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
-Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth');
+Route::get('/profile', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'create'])->middleware('guest');
+require __DIR__.'/auth.php';
 
-Route::get('/', [HomeController::class, 'index'])->middleware('auth');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth', 'role:staff,admin');
+Route::middleware('auth:admin')->group(function () {
+
+    Route::get('/admin', [PageController::class, 'dashboard'])->name('dashboard');
+    
+    Route::get('/admin/users', [PageController::class, 'user'])->name('dashboard-users');
+    Route::get('/admin/staffs', [PageController::class, 'staff'])->name('dashboard-staff');
+    Route::get('/admin/admins', [PageController::class, 'admin'])->name('dashboard-admin');
+
+    Route::resource('/admin/items', ItemController::class);
+    Route::resource('staffAjax', StaffAjaxController::class);
+    Route::resource('adminAjax', AdminAjaxController::class);
+    Route::resource('userAjax', UserAjaxController::class);
+});
+
+Route::get('/', function () {
+    return view('pages.home');
+});
+Route::get('/auctions', function(){
+    return view('pages.auctions');
+});
+// Route::get('/auctions/{auction}', function () {
+Route::get('/auction', function () {
+    return view('pages.auction');
+});
+Route::get('/mybid', function () {
+    return view('pages.mybid');
+});
+Route::get('/auctions/404', function () {
+    return view('pages.auction404');
+});
+
+require __DIR__.'/adminauth.php';
+
+
+
