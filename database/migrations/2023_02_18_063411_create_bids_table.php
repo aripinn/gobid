@@ -15,12 +15,10 @@ return new class extends Migration
     {
         Schema::create('bids', function (Blueprint $table) {
             $table->id();
-
-            $table->integer('user_id');
-            $table->integer('item_id');
-
+            $table->foreignId('user_id');
+            $table->foreignId('auction_id');
             $table->bigInteger('bid_amount');
-
+            $table->enum('result', ['ongoing','win','lose'])->default('ongoing');
             $table->timestamps();
         });
     }

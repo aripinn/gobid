@@ -11,10 +11,20 @@ class Auction extends Model
 
     protected $fillable = [
         'item_id',
-        'user',
+        'user_id',
         'start_date',
         'end_date',
-        'final_price',
+        'end_price',
+        'status',
     ];
 
+    public function item(){
+        return $this->belongsTo(Item::class);
+    }
+    public function bid(){
+        return $this->hasMany(Bid::class);
+    }
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }

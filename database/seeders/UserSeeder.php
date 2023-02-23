@@ -16,38 +16,51 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::create([
+            'name' => 'Member',
+            'username' => 'member',
+            'password' => bcrypt('member'),
+            'phone' => '0810',
+            'role' => 'Member',
+        ]);
+
+        User::create([
             'name' => 'Aripin',
             'username' => 'arp',
             'password' => bcrypt('arp'),
             'phone' => '0811',
+            'role' => 'Member',
         ]);
         
         User::create([
-            'name' => 'Shafwana Musyaffa',
-            'username' => 'wana',
-            'password' => bcrypt('wana'),
+            'name'=>'Staff',
+            'username'=>'staff',
+            'password'=>bcrypt('staff'),
             'phone' => '0812',
+            'role'=>'Staff',
         ]);
-        
+
         User::create([
-            'name' => 'Padli Septiana',
-            'username' => 'icarus',
-            'password' => bcrypt('icarus'),
+            'name'=>'Kalara',
+            'username'=>'kalara',
+            'password'=>bcrypt('kalara'),
             'phone' => '0813',
+            'role'=>'Staff',
+        ]);
+
+        User::create([
+            'name'=>'Admin',
+            'username'=>'admin',
+            'password'=>bcrypt('admin'),
+            'phone' => '0814',
+            'role'=>'Admin',
         ]);
         
         User::create([
-            'name' => 'Fariz Ferdiano',
-            'username' => 'dyano',
-            'password' => bcrypt('dyano'),
-            'phone' => '0817',
-        ]);
-        
-        User::create([
-            'name' => 'Member',
-            'username' => 'member',
-            'password' => bcrypt('member'),
-            'phone' => '0816',
+            'name'=>'Dirga',
+            'username'=>'dirga',
+            'password'=>bcrypt('dirga'),
+            'phone' => '0815',
+            'role'=>'Admin',
         ]);
     }
 }

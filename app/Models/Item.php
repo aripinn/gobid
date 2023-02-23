@@ -10,7 +10,10 @@ class Item extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'description', 'image', 'starting_price', 'auction_end_time', 'status', 'winner_id'
+        'name',
+        'start_price',
+        'description',
+        'image',
     ];
 
     protected $dates = [

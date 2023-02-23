@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('auctions', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('username')->unique();
-            $table->string('password');
-            $table->string('phone')->nullable();
-            $table->enum('role', ['Member','Staff','Admin']);
-            $table->rememberToken();
+            $table->foreignId('item_id');
+            $table->foreignId('user_id')->nullable();
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
+            $table->bigInteger('end_price');
+            $table->enum('status', ['open','close']);
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('auctions');
     }
 };

@@ -15,19 +15,10 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-
             $table->string('name');
-            $table->text('description');
             $table->string('image');
-
-            $table->bigInteger('starting_price');
-            $table->datetime('auction_end_time');
-            
-            $table->enum('status', ['open', 'closed']);
-            
-            $table->integer('winner_id')->nullable(
-
-            );
+            $table->text('description');
+            $table->bigInteger('start_price');
             $table->timestamps();
         });
     }

@@ -10,12 +10,15 @@ class Bid extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'item_id', 'bid_amount'
+        'user_id',
+        'auction_id',
+        'bid_amount',
+        'result',
     ];
 
-    public function item()
+    public function auction()
     {
-        return $this->belongsTo(Item::class);
+        return $this->belongsTo(auction::class);
     }
 
     public function user()
