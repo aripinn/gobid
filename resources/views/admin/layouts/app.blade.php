@@ -77,7 +77,7 @@
             </li> -->
 
             <li class="class=dropdown-item d-flex align-items-center">
-              <form action="{{ route('admin.logout') }}" method="post">
+              <form action="{{ route('logout') }}" method="post">
               @csrf
               <button type="submit" class="border-none btn btn-danger">
                 <i class="bi bi-box-arrow-right"></i>

@@ -29,7 +29,7 @@ Route::get('/profile', function () {
 require __DIR__.'/auth.php';
 
 
-Route::middleware('auth:admin')->group(function () {
+Route::middleware('auth', 'role:Staff,Admin')->group(function () {
 
     Route::get('/admin', [PageController::class, 'dashboard'])->name('dashboard');
     

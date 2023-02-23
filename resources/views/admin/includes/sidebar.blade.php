@@ -42,7 +42,7 @@
 
     <li class="nav-item">
       <a class="nav-link collapsed">
-        <form action="{{ route('admin.logout') }}" method="POST">
+        <form action="{{ route('logout') }}" method="POST">
         @csrf
         <button type="submit" class="border-0 bg-transparent">
           <i class="bi bi-box-arrow-right"></i>
