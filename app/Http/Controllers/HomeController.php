@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class HomeController extends Controller
 {
     public function index(){
-
-        $user = AUth::user();
-        switch($user->role){
+        $currentUser = Auth::user();
+        switch($currentUser->role){
             case 'admin':
                 return redirect('/dashboard');
                 break;
@@ -18,7 +18,8 @@ class HomeController extends Controller
                 return redirect('/dashboard');
                 break;
             default:
-                return view('pages.member.index');
+                $users = User::get();
+                return view('pages.member.index', compact('users'));
                 break;
         }
     }

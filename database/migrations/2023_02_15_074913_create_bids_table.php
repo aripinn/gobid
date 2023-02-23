@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->foreignId('auction_id');
             $table->integer('bid_price');
+            $table->enum('result', ['win','lose'])->nullable();
         });
     }
 
