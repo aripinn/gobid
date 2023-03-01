@@ -18,6 +18,13 @@ class Auction extends Model
         'status',
     ];
 
+    // public function scopeHighestbid($query){
+    //     // $query->when()
+    //     return $query->bid->max('bid_amount');
+    // }
+
+    protected $with = ['item', 'bid', 'user'];
+    
     public function item(){
         return $this->belongsTo(Item::class);
     }

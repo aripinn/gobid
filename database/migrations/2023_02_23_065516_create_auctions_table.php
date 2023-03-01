@@ -18,8 +18,8 @@ return new class extends Migration
             $table->foreignId('item_id');
             $table->foreignId('user_id')->nullable();
             $table->dateTime('start_date');
-            $table->dateTime('end_date');
-            $table->bigInteger('end_price');
+            $table->dateTime('end_date')->nullable();
+            $table->bigInteger('end_price')->nullable();
             $table->enum('status', ['open','close']);
             $table->timestamps();
         });

@@ -16,6 +16,8 @@ class Bid extends Model
         'result',
     ];
 
+    // protected $with = ['auction', 'user'];
+
     public function auction()
     {
         return $this->belongsTo(auction::class);

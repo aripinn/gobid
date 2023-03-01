@@ -16,10 +16,6 @@ class Item extends Model
         'image',
     ];
 
-    protected $dates = [
-        'auction_end_time'
-    ];
-
     // public function getImageUrlAttribute()
     // {
     //     if (str_starts_with($this->image, 'http')) {
