@@ -5,21 +5,21 @@
   <div class="card recent-sales overflow-auto">
 
     <div class="card-body">
-      <h5 class="card-title">Data Users</h5>
+      <h5 class="card-title">Members</h5>
 
       <div class="pb-3">
         
-        <a href="#" class="btn bg-primary text-light button-create">Create Users</a>
+        <a href="#" class="btn bg-primary text-light button-create">Add Member</a>
       </div>
 
       <table id="tablePengguna" class="display">
         <thead>
             <tr>
                 <th>#</th>
-                <th>Nama</th>
+                <th>Name</th>
                 <th>Username</th>
-                <th>No. Handphone</th>
-                <th>Aksi</th>
+                <th>Phone Number</th>
+                <th>Action</th>
             </tr>
         </thead>
       </table>
@@ -29,7 +29,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Member</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -42,19 +42,19 @@
                 </div>
               </div>
               <div class="mb-3 row">
-                <label for="username" class="col-sm-2-col col-form-label">username</label>
+                <label for="username" class="col-sm-2-col col-form-label">Username</label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" name="username" id="username">
                 </div>
               </div>
               <div class="mb-3 row">
-                <label for="phone" class="col-sm-2-col col-form-label">phone</label>
+                <label for="phone" class="col-sm-2-col col-form-label">Phone Number</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" name="phone" id="phone">
+                  <input type="number" class="form-control" name="phone" id="phone">
                 </div>
               </div>
               <div class="mb-3 row">
-                <label for="password" class="col-sm-2-col col-form-label">password</label>
+                <label for="password" class="col-sm-2-col col-form-label">Password</label>
                 <div class="col-sm-10">
                   <input type="password" class="form-control" name="password" id="password">
                 </div>

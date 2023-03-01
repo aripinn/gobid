@@ -10,8 +10,10 @@ class ItemController extends Controller
 {
     public function index()
     {
-        $items = Item::all();
-        return view('admin.pages.items.index', ['items' => $items]);
+        $items = Item::latest()->get();
+        return view('admin.pages.items.index', [
+            'items' => $items
+        ]);
     }
 
     public function create()
@@ -25,14 +27,13 @@ class ItemController extends Controller
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            'starting_price' => 'required|numeric',
-            'auction_end_time' => 'required|date',
+            'start_price' => 'required|numeric',
         ]);
 
         $input = $request->all();
 
         if ($image = $request->file('image')) {
-            $destinationPath = 'images/';
+            $destinationPath = 'assets/item-img/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $input['image'] = "$profileImage";

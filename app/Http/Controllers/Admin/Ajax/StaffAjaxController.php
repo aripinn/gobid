@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Admin\Ajax;
 
-use App\Models\Admin;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -18,7 +18,7 @@ class StaffAjaxController extends Controller
      */
     public function index()
     {
-        $data = Admin::where('role', 'STAFF')->orderBy('created_at', 'asc')->get();
+        $data = User::where('role', 'Staff')->orderBy('created_at', 'asc')->get();
 
         return DataTables::of($data)
             ->addIndexColumn()
@@ -49,15 +49,17 @@ class StaffAjaxController extends Controller
         $validasi = Validator::make($request->all(), [
             'name' => 'required', 'string', 'max:255',
             'username' => 'required', 'unique:users', 'string', 'max:255',
-            'email' => 'required',
-            'role' => 'required',
+            'phone' => 'max:25',
+            // 'email' => 'required',
+            // 'role' => 'required',
             'password' => 'required',
         ], [
-            'name' => 'Nama wajib di isi',
-            'username' => 'Username wajib di isi',
-            'email' => 'Email Wajib di isi',
-            'role' => 'Role Wajib di isi',
-            'password' => 'Password perlu di isi',
+            'name' => 'Name is required!',
+            'username' => 'Username is required!',
+            'phone' => 'Phone Number exceeds 25 characters',
+            // 'email' => 'Email Wajib di isi',
+            // 'role' => 'Role Wajib di isi',
+            'password' => 'Password is required!',
         ]);
 
         if ($validasi->fails()) {
@@ -67,11 +69,12 @@ class StaffAjaxController extends Controller
             $admin = [
                 'name' => $request->name,
                 'username' => $request->username,
-                'role' => 'STAFF',
-                'email' => $request->email,
+                'role' => 'Staff',
+                'phone' => $request->phone,
+                // 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ];
-            Admin::create($admin);
+            User::create($admin);
             return response()->json(['success' => 'Berhasil Menyimpan']);
         }
 
@@ -96,7 +99,7 @@ class StaffAjaxController extends Controller
      */
     public function edit($id)
     {
-        $data = Admin::where('id', $id)->first();
+        $data = User::where('id', $id)->first();
         return response()->json(['result' => $data]);
     }
 
@@ -112,15 +115,17 @@ class StaffAjaxController extends Controller
         $validasi = Validator::make($request->all(), [
             'name' => 'required', 'string', 'max:255',
             'username' => 'required', 'unique:users', 'string', 'max:255',
-            'email' => 'required',
-            'role' => 'required',
+            'phone' => 'max:25',
+            // 'email' => 'required',
+            // 'role' => 'required',
             'password' => 'required',
         ], [
-            'name' => 'Nama wajib di isi',
-            'username' => 'Username wajib di isi',
-            'role' => 'Role wajib di isi',
-            'email' => 'Email Wajib di isi',
-            'password' => 'Password perlu di isi',
+            'name' => 'Name is required!',
+            'username' => 'Username is required!',
+            'phone' => 'Phone Number exceeds 25 characters',
+            // 'email' => 'Email Wajib di isi',
+            // 'role' => 'Role Wajib di isi',
+            'password' => 'Password is required!',
         ]);
 
         if ($validasi->fails()) {
@@ -130,11 +135,12 @@ class StaffAjaxController extends Controller
             $admin = [
                 'name' => $request->name,
                 'username' => $request->username,
-                'role' => 'STAFF',
-                'email' => $request->email,
+                'role' => 'Staff',
+                'phone' => $request->phone,
+                // 'email' => $request->email,
                 'password' => Hash::make($request->password),
             ];
-            Admin::where('id', $id)->update($admin);
+            User::where('id', $id)->update($admin);
             return response()->json(['success' => 'Berhasil Mengupdate Data']);
         }
     }
@@ -147,7 +153,7 @@ class StaffAjaxController extends Controller
      */
     public function destroy($id)
     {
-        Admin::where('id', $id)->delete();
+        User::where('id', $id)->delete();
     }
 }
 

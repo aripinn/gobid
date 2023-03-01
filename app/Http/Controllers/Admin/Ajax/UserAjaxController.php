@@ -19,7 +19,7 @@ class UserAjaxController extends Controller
      */
     public function index()
     {
-        $data = User::orderBy('created_at', 'asc')->get();
+        $data = User::where('role', 'Member')->orderBy('created_at', 'asc')->get();
 
         return DataTables::of($data)
             ->addIndexColumn()
@@ -50,13 +50,13 @@ class UserAjaxController extends Controller
         $validasi = Validator::make($request->all(), [
             'name' => 'required', 'string', 'max:255',
             'username' => 'required', 'unique:users', 'string', 'max:255',
-            'phone' => 'required', 'max:12',
+            'phone' => 'max:25',
             'password' => 'required',
         ], [
-            'name' => 'Nama wajib di isi',
-            'username' => 'Username wajib di isi',
-            'phone' => 'Nomor telepon Wajib di isi',
-            'password' => 'Password perlu di isi',
+            'name' => 'Name is required!',
+            'username' => 'Username is required!',
+            'phone' => 'Phone Number exceeds 25 characters',
+            'password' => 'Password is required!',
         ]);
 
         if ($validasi->fails()) {

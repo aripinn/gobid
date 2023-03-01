@@ -5,21 +5,22 @@
   <div class="card recent-sales overflow-auto">
 
     <div class="card-body">
-      <h5 class="card-title">Data Staff</h5>
+      <h5 class="card-title">Staffs</h5>
 
       <div class="pb-3">
         
-        <a href="#" class="btn bg-primary text-light button-create">Create Staff</a>
+        <a href="#" class="btn bg-primary text-light button-create">Add Staff</a>
       </div>
 
       <table id="tablePengguna" class="display">
         <thead>
             <tr>
                 <th>#</th>
-                <th>Nama</th>
+                <th>Name</th>
                 <th>Username</th>
-                <th>Email</th>
-                <th>Aksi</th>
+                <th>Phone Number</th>
+                {{-- <th>Email</th> --}}
+                <th>Action</th>
             </tr>
         </thead>
       </table>
@@ -29,7 +30,7 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Staff</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -47,16 +48,22 @@
                   <input type="text" class="form-control" name="username" id="username">
                 </div>
               </div>
-              <div class="mb-3 row">
+              {{-- <div class="mb-3 row">
                 <label for="role" class="col-sm-2-col col-form-label">Role</label>
                 <div class="col-sm-10">
                   <input type="text" class="form-control" name="role" id="role" value="STAFF" readonly>
                 </div>
-              </div>
-              <div class="mb-3 row">
+              </div> --}}
+              {{-- <div class="mb-3 row">
                 <label for="email" class="col-sm-2-col col-form-label">Email</label>
                 <div class="col-sm-10">
                   <input type="email" class="form-control" name="email" id="email">
+                </div>
+              </div> --}}
+              <div class="mb-3 row">
+                <label for="phone" class="col-sm-2-col col-form-label">Phone Number</label>
+                <div class="col-sm-10">
+                  <input type="number" class="form-control" name="phone" id="phone">
                 </div>
               </div>
               <div class="mb-3 row">
@@ -97,9 +104,12 @@
           }, {
             data: 'username',
             name: 'Username'
+          // }, {
+          //   data: 'email',
+          //   name: 'Email'
           }, {
-            data: 'email',
-            name: 'Email'
+            data: 'phone',
+            name: 'phone'
           }, {
             data: 'aksi',
             name: 'Aksi'
@@ -131,7 +141,8 @@
             $('#createModal').modal('show');
             $('#name').val(response.result.name);
             $('#username').val(response.result.username);
-            $('#email').val(response.result.email);
+            // $('#email').val(response.result.email);
+            $('#phone').val(response.result.phone);
             $('#role').val(response.result.role);
             $('#password').val(response.result.password);
             console.log(response.result);
@@ -172,7 +183,8 @@
               name: $('#name').val(),
               username: $('#username').val(),
               role: $('#role').val(),
-              email: $('#email').val(),
+              // email: $('#email').val(),
+              phone: $('#phone').val(),
               password: $('#password').val(),
             },
             success:function(response){
@@ -199,7 +211,8 @@
         // alert('Haloo');
         $('#name').val('');
         $('#username').val('');
-        $('#email').val('');
+        // $('#email').val('');
+        $('#phone').val('');
         $('#password').val('');
 
         $('.alert-danger').addClass('d-none');

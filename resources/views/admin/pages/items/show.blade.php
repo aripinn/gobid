@@ -8,7 +8,7 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-4">
-                <img src="/images/{{ $item->image }}" alt="{{ $item->name }}" class="w-100">
+                <img src="/assets/item-img/{{ $item->image }}" alt="{{ $item->name }}" class="w-100">
                 </div>
                 <div class="col-md-8">
                     <p>{{ $item->description }}</p>
