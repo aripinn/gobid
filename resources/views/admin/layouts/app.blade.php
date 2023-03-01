@@ -16,8 +16,9 @@
   <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="/assets/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -40,21 +41,20 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
-        <img src="/assets/img/GoBid.svg" alt="">
+      <a href="/" class="logo d-flex align-items-center">
+        <img src="/assets/img/GoBid.svg" alt="GoBid">
         {{-- <span class="d-none d-lg-block">GoBid</span> --}}
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
 
+    {{-- Account --}}
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
-
-        <li class="nav-item dropdown pe-3">
-
+        <li class="nav-item dropdown pe-4">
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            {{-- <img src="/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> --}}
-            <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->name }}</span>
+            <iconify-icon icon="mdi:user-circle" style="color: #000000;" width="30"></iconify-icon>
+            <span class="d-none d-md-block dropdown-toggle ps-1">{{ Auth::user()->name }}</span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -65,27 +65,15 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-
-            <!-- <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li> -->
-
-            <li class="class=dropdown-item d-flex align-items-center">
+            <li class="dropdown-item d-flex align-items-center justify-content-center">
               <form action="{{ route('logout') }}" method="post">
               @csrf
-              <button type="submit" class="border-none btn btn-danger">
-                <i class="bi bi-box-arrow-right"></i>
+              <button type="submit" class="border-0 btn w-100">
+                <i class="bi bi-box-arrow-right me-1"></i>
                 Logout
               </button>
               </form>
             </li>
-
           </ul><!-- End Profile Dropdown Items -->
         </li><!-- End Profile Nav -->
 
@@ -132,6 +120,8 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
   <script src="/assets/vendor/DataTables/datatables.js"></script>
   <script src="/assets/js/numeral.js"></script>
+  {{-- Iconify --}}
+  <script src="https://code.iconify.design/iconify-icon/1.0.5/iconify-icon.min.js"></script>
 
   @stack('addon-script')
 

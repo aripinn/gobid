@@ -29,15 +29,22 @@
             {{-- Drop down --}}
             <div class="nav-item dropdown">
               <div class="btn-group">
-                <button type="button" class="btn dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
+                <button type="button" class="btn border-0 dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown" aria-expanded="false">
                   <iconify-icon icon="mdi:user" style="color: #000aff;" width="26"></iconify-icon>
                   <strong class="ms-2">{{ Auth::user()->name }}</strong>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
+                  @can('Member')
+                  @else
+                  <li>
+                    <a class="btn border-0 w-100 fw-medium" href="{{ route('dashboard') }}">Dashboard</a>
+                  </li>
+                  <div class="dropdown-divider"></div>
+                  @endcan
                   <li>
                     <form action="{{ route('logout') }}" method="post">
                       @csrf
-                      <button class="btn w-100 text-danger fw-bold" type="submit">Logout</button>
+                      <button class="btn border-0 w-100 text-danger fw-bold" type="submit">Logout</button>
                     </form>
                   </li>
                 </ul>

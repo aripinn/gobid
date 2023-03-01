@@ -10,14 +10,15 @@
       <div class="col-xl-4 col-sm-6 col-10 mx-sm-0 mx-auto">
         @if (count($items) > 0)
         @foreach ($items as $item)
-        <div class="card recent-sales overflow-auto">
+          <div class="card recent-sales overflow-auto">
             <div class="card-body pt-4">
-              <img src="/images/{{ $item->image }}" alt="{{ $item->name }}" class="w-100">
+              <img src="/assets/item-img/{{ $item->image }}" alt="{{ $item->name }}" class="w-100">
               <h5 class="card-title mb-1 pb-0">{{ $item->name }}</h5>
-              <h6 class="fw-semibold">Harga Awal : Rp. <span class="harga">{{ $item->starting_price }}</span></h6>
-              <p class="card-text">
+              {{-- <h6 class="fw-semibold">Harga Awal : Rp. <span class="harga">{{ $item->start_price }}</span></h6> --}}
+              <h6 class="fw-semibold">Harga Awal : Rp <span>{{ $item->start_price }}</span></h6>
+              {{-- <p class="card-text">
                 {{ $item->auction_end_time->format('d M Y, H:i:s') }}
-              </p>
+              </p> --}}
               <p class="card-text">
                 {{ $item->description }}
               </p>

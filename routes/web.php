@@ -1,11 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AuctionController;
+use App\Http\Controllers\Admin\ItemController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\Ajax\UserAjaxController;
 use App\Http\Controllers\Admin\Ajax\AdminAjaxController;
 use App\Http\Controllers\Admin\Ajax\StaffAjaxController;
-use App\Http\Controllers\Admin\ItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +20,13 @@ use App\Http\Controllers\Admin\ItemController;
 |
 */
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
+// Route::get('/welcome', function () {
+//     return view('welcome');
+// });
 
-Route::get('/profile', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/profile', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
 
@@ -43,16 +45,13 @@ Route::middleware('auth', 'role:Staff,Admin')->group(function () {
     Route::resource('userAjax', UserAjaxController::class);
 });
 
-Route::get('/', function () {
-    return view('pages.home');
-});
-Route::get('/auctions', function(){
-    return view('pages.auctions');
-});
-// Route::get('/auctions/{auction}', function () {
-Route::get('/auction', function () {
-    return view('pages.auction');
-});
+// Client
+Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/auctions', [AuctionController::class, 'index']);
+
+Route::get('/auction/{auction}', [AuctionController::class, 'show']);
+
 Route::get('/mybid', function () {
     return view('pages.mybid');
 });
