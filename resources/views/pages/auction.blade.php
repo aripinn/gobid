@@ -77,7 +77,7 @@
                     <th scope="col" style="width: 7.5%">#</th>
                     <th scope="col" style="width: 30%">Bidder</th>
                     <th scope="col" style="width: 25%">Bid Amount</th>
-                    <th scope="col">Time</th>
+                    <th scope="col"> Bid Time</th>
                   </tr>
                 </thead>
                 <tbody>

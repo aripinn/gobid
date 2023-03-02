@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\Ajax\UserAjaxController;
 use App\Http\Controllers\Admin\Ajax\AdminAjaxController;
 use App\Http\Controllers\Admin\Ajax\StaffAjaxController;
+use App\Http\Controllers\MyBidController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,9 +53,8 @@ Route::get('/auctions', [AuctionController::class, 'index']);
 
 Route::get('/auction/{auction}', [AuctionController::class, 'show']);
 
-Route::get('/mybid', function () {
-    return view('pages.mybid');
-});
+Route::get('/mybid', [MyBidController::class, 'index']);
+
 Route::get('/auctions/404', function () {
     return view('pages.auction404');
 });
