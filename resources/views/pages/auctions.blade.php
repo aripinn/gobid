@@ -50,7 +50,7 @@
               <div class="col ms-2">
                 <span class="card-text text-muted" style="font-size: 12px">Current Bid</span><br>
                 <span class="card-text fw-bold fs-6">
-                  @if ($auction->bid->max('bid_amount') != null)
+                  @if ($auction->bid->count())
                     @rupiah($auction->bid->max('bid_amount'))
                   @else
                     @rupiah($auction->item->start_price)
