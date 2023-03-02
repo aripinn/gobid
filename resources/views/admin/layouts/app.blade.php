@@ -53,7 +53,8 @@
       <ul class="d-flex align-items-center">
         <li class="nav-item dropdown pe-4">
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <iconify-icon icon="mdi:user-circle" style="color: #000000;" width="30"></iconify-icon>
+            {{-- <iconify-icon icon="mdi:user-circle" style="color: #000aff;" width="30"></iconify-icon> --}}
+            <i class="bi bi-person-circle fs-3"></i>
             <span class="d-none d-md-block dropdown-toggle ps-1">{{ Auth::user()->name }}</span>
           </a><!-- End Profile Iamge Icon -->
 

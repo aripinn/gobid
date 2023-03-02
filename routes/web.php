@@ -35,15 +35,22 @@ require __DIR__.'/auth.php';
 Route::middleware('auth', 'role:Staff,Admin')->group(function () {
 
     Route::get('/admin', [PageController::class, 'dashboard'])->name('dashboard');
+    Route::get('/admin/members', [PageController::class, 'user'])->name('dashboard-users');
     
-    Route::get('/admin/users', [PageController::class, 'user'])->name('dashboard-users');
-    Route::get('/admin/staffs', [PageController::class, 'staff'])->name('dashboard-staff');
-    Route::get('/admin/admins', [PageController::class, 'admin'])->name('dashboard-admin');
-
-    Route::resource('/admin/items', ItemController::class);
-    Route::resource('staffAjax', StaffAjaxController::class);
-    Route::resource('adminAjax', AdminAjaxController::class);
     Route::resource('userAjax', UserAjaxController::class);
+    Route::resource('/admin/items', ItemController::class);
+});
+
+Route::middleware('auth', 'role:Admin')->group(function () {
+    Route::get('/admin/staffs', [PageController::class, 'staff'])->name('dashboard-staff');
+    // Route::get('/admin/admins', [PageController::class, 'admin'])->name('dashboard-admin');
+    
+    Route::resource('staffAjax', StaffAjaxController::class);
+    // Route::resource('adminAjax', AdminAjaxController::class);
+});
+
+Route::middleware('auth', 'role:staff')->group(function () {
+    //open/close auction
 });
 
 // Client
