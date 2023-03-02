@@ -25,15 +25,11 @@ class Item extends Model
     //     return asset('storage/' . $this->image);
     // }
 
-
-    public function bids()
+    // protected $with = ['auction'];
+    //$with auction fail
+    public function auction()
     {
-        return $this->hasMany(Bid::class);
-    }
-
-    public function winner()
-    {
-        return $this->belongsTo(User::class, 'winner_id');
+        return $this->hasOne(Auction::class);
     }
 
 }

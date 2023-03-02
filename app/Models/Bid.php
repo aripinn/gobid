@@ -16,16 +16,15 @@ class Bid extends Model
         'result',
     ];
 
-    // protected $with = ['auction', 'user'];
-
-    public function auction()
-    {
-        return $this->belongsTo(auction::class);
-    }
+    protected $with = ['user'];
+    //$with auction fail
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    public function auction(){
+        return $this->belongsTo(Auction::class);
     }
 
 }

@@ -43,4 +43,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // protected $with = ['auction','bid'];
+    // Eager loading fail
+
+    public function auction(){
+        return $this->hasMany(Auction::class);
+    }
+    public function bid(){
+        return $this->hasMany(Bid::class);
+    }
 }
