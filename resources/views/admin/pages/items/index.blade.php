@@ -1,199 +1,90 @@
 @extends('admin.layouts.app')
 
-
 @section('content')
-  <section class="section dashboard">
-    <a href="{{ route('items.create') }}" class="btn btn-primary mb-4">
-      Tambah
-    </a>
-    <div class="row">
-      <div class="col-xl-4 col-sm-6 col-10 mx-sm-0 mx-auto">
-        @if (count($items) > 0)
-        @foreach ($items as $item)
-          <div class="card recent-sales overflow-auto">
-            <div class="card-body pt-4">
-              <img src="/assets/item-img/{{ $item->image }}" alt="{{ $item->name }}" class="w-100">
-              <h5 class="card-title mb-1 pb-0">{{ $item->name }}</h5>
-              {{-- <h6 class="fw-semibold">Harga Awal : Rp. <span class="harga">{{ $item->start_price }}</span></h6> --}}
-              <h6 class="fw-semibold">Harga Awal : Rp <span>{{ $item->start_price }}</span></h6>
-              {{-- <p class="card-text">
-                {{ $item->auction_end_time->format('d M Y, H:i:s') }}
-              </p> --}}
-              <p class="card-text">
-                {{ $item->description }}
-              </p>
-              <div class="d-flex justify-content-end gap-2">
-                <form action="{{ route('items.destroy', $item->id) }}" method="POST" class="d-inline-block">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?')">Delete</button>
-                </form>
-
-
-                <a href="" class="btn btn-warning">
-                  Edit
-                </a>
-                <a href="{{ route('items.show', $item->id) }}" class="btn btn-primary">
-                  Detail
-                </a>
-              </div>
-            </div>
-
-
-
-          {{-- <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>
-                        <img src="{{ $item->image_url }}" alt="{{ $item->name }}" class="img-thumbnail" style="max-width: 150px;">
-                    </td>
-                    <td>
-                        <a href="" class="btn btn-primary">View</a>
-                    </td>
-                </tr> --}}
-                
-              </div>
-              @endforeach
-            @else
-                <p>No items found.</p>
-            @endif
+<section class="section dashboard">
+  <div class="card recent-sales">
+    <div class="card-body mt-4">
+      <div class="pb-3">
+        <a href="{{ route('items.create') }}" class="btn btn-primary button-create">Add new item</a>
       </div>
+      {{-- Table --}}
+      @if ($items->count())
+      <table id="tablePengguna" class="display table table-responsive align-middle">
+        <thead>
+            <tr>
+                <th style="width: 7.5%;">ID</th>
+                <th style="width: 27.5%">Item</th>
+                <th style="width: 25%">Description</th>
+                <th style="width: 15%">Starting Price</th>
+                <th style="width: 12.5%">Availability</th>
+                <th style="width: ">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+          @foreach ($items as $item)
+          <tr>
+            {{-- id, img, name --}}
+            <td>{{ $item->id }}</td>
+            <td>
+              <img src="/assets/item-img/{{ $item->image }}" 
+                  alt="{{ $item->name }}"
+                  class="rounded"
+                  style="height: 65px; width: 65px; object-fit: cover">
+              <span class="ms-1 d-inline-block text-truncate" style="max-width: 210px;">{{ $item->name }}</span>
+            </td>
+            {{-- desc, price --}}
+            <td>
+              <textarea cols="30" rows="3" class="border border-dark-subtle" style="resize: none" readonly>{{ $item->description }}</textarea>
+            </td>
+            <td>@rupiah($item->start_price)</td>
+            {{-- availability --}}
+            <td>
+              @isset($item->auction->status)
+                @switch($item->auction->status)
+                  @case('open')
+                    <div class="badge bg-warning p-2 fw-normal" style="font-size: 14px">Auctioned</div>
+                    @break
+                  @case('close')
+                    <div class="badge bg-danger p-2 fw-normal" style="font-size: 14px">Sold</div>
+                    @break
+                @endswitch
+              @else
+                <div class="badge bg-success p-2 fw-normal" style="font-size: 14px">Available</div>
+              @endisset
+            </td>
+            {{-- actions --}}
+            <td>
+              <div class="d-flex justify-content-start gap-2">
+                {{-- edit --}}
+                <a href="#" class="btn btn-primary">
+                  <i class="bi bi-pencil-square"></i>
+                </a>
+                {{-- delete --}}
+                @isset($item->auction->status)
+                @else
+                <form action="{{ route('items.destroy', $item->id) }}" method="POST" class="d-inline-block">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?')">
+                    <i class="bi bi-trash3"></i>
+                  </button>
+                </form>
+                @endisset
+              </div>
+            </td>
+          </tr>
+          @endforeach
+        </tbody>
+      </table>
     </div>
-  </section>
+    {{-- Pagination --}}
+    <div class="card-footer border-top-0 pt-0 mx-2">
+      {{ $items->links() }}
+    </div>
+    @else
+      <p class="text-center fw-medium fs-3 mt-3 mb-4">No item found.</p>
+    </div>
+    @endif
+  </div>
+</section>
 @endsection
-
-@push('addon-script')
-    <script>
-      $(document).ready(function() {
-        $('#tablePengguna').DataTable({
-          processing:true,
-          serverside:true,
-          ajax:"{{ url('/staffAjax') }}",
-          columns:[{
-            data:'DT_RowIndex',
-            name:'DT_RowIndex',
-            orderable:true,
-            searchable:true,
-          }, {
-            data:'name',
-            name:'Name',
-          }, {
-            data: 'username',
-            name: 'Username'
-          }, {
-            data: 'email',
-            name: 'Email'
-          }, {
-            data: 'aksi',
-            name: 'Aksi'
-          }]
-        });
-      });
-
-      $.ajaxSetup({
-        headers:{
-          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-      });
-
-      // Saving
-      $('body').on('click', '.button-create', function(e) {
-        e.preventDefault();
-        $('#createModal').modal('show');
-        $('.button-save').click(function() {
-          simpan();
-        });
-      });
-
-      $('body').on('click', '.button-edit', function(e) {
-        var id = $(this).data('id');
-        $.ajax({
-          url:'/staffAjax/' + id + '/edit',
-          type:'GET',
-          success:function(response){
-            $('#createModal').modal('show');
-            $('#name').val(response.result.name);
-            $('#username').val(response.result.username);
-            $('#email').val(response.result.email);
-            $('#role').val(response.result.role);
-            $('#password').val(response.result.password);
-            console.log(response.result);
-            $('.button-save').click(function() {
-              simpan(id);
-            });
-          }
-        });
-      });
-
-      // Delete
-      $('body').on('click', '.button-del', function(e) {
-        // alert('cuy');
-        if (confirm('Anda yakin ingin menghapus data user ini?') == true) {
-          var id = $(this).data('id');
-          $.ajax({
-            url: '/staffAjax/' + id,
-            type: 'DELETE',
-          });
-          $('#tablePengguna').DataTable().ajax.reload();
-        }
-      });
-
-      // Save
-      function simpan(id = '') {
-        if (id == '') {
-          var var_url = '/staffAjax';
-          var var_type = 'POST';
-        } else {
-          var var_url = '/staffAjax/' + id;
-          var var_type = 'PUT';
-        }
-
-          $ .ajax({
-            url: var_url,
-            type: var_type,
-            data:{
-              name: $('#name').val(),
-              username: $('#username').val(),
-              role: $('#role').val(),
-              email: $('#email').val(),
-              password: $('#password').val(),
-            },
-            success:function(response){
-              if(response.errors){
-                console.log(response.errors);
-                $('.alert-danger').removeClass('d-none');
-                $('.alert-danger').html("<ul>");
-                $.each(response.errors, function(key,value) {
-                  $('.alert-danger').find('ul').append("<li>" + value + "</li>");
-                });
-                $('.alert-danger').append("</ul>");
-              } else {
-                $('.alert-success').removeClass('d-none');
-                $('.alert-success').html(response.success);
-              }
-              $('#tablePengguna').DataTable().ajax.reload();
-            }
-
-          });
-        };
-
-
-      $('#createModal').on('hidden.bs.modal', function() {
-        // alert('Haloo');
-        $('#name').val('');
-        $('#username').val('');
-        $('#email').val('');
-        $('#password').val('');
-
-        $('.alert-danger').addClass('d-none');
-        $('.alert-danger').html('');
-
-        $('.alert-success').addClass('d-none');
-        $('.alert-success').html('');
-        
-      });
-
-    </script>
-@endpush

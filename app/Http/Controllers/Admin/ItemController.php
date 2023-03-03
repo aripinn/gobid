@@ -10,15 +10,18 @@ class ItemController extends Controller
 {
     public function index()
     {
-        $items = Item::latest()->get();
+        $items = Item::latest()->paginate(25);
         return view('admin.pages.items.index', [
-            'items' => $items
+            'title' => 'Items',
+            'items' => $items,
         ]);
     }
 
     public function create()
     {
-        return view('admin.pages.items.create');
+        return view('admin.pages.items.create',[
+            'title' => 'Add new item',
+        ]);
     }
 
     public function store(Request $request)

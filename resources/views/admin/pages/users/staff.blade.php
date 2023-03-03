@@ -4,12 +4,12 @@
 @section('content')
   <div class="card recent-sales overflow-auto">
 
-    <div class="card-body">
-      <h5 class="card-title">Staffs</h5>
+    <div class="card-body mt-4">
+      {{-- <h5 class="card-title">Staffs</h5> --}}
 
       <div class="pb-3">
         
-        <a href="#" class="btn bg-primary text-light button-create">Add Staff</a>
+        <a href="#" class="btn bg-primary text-light button-create">Add new staff</a>
       </div>
 
       <table id="tablePengguna" class="display">

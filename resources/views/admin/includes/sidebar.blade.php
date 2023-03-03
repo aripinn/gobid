@@ -12,7 +12,7 @@
 
     <li class="nav-heading">Master Data</li>
     <li class="nav-item">
-      <a class="nav-link {{ (request()->is('admin/users')) ? '' : 'collapsed' }}" href="{{ route('dashboard-users') }}">
+      <a class="nav-link {{ (request()->is('admin/members')) ? '' : 'collapsed' }}" href="{{ route('dashboard-users') }}">
         <i class="bi bi-people"></i>
         <span>Members</span>
       </a>

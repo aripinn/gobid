@@ -4,13 +4,12 @@
 @section('content')
   <div class="card recent-sales overflow-auto">
 
-    <div class="card-body">
-      <h5 class="card-title">Members</h5>
+    <div class="card-body mt-4">
+      {{-- <h5 class="card-title fw-semibold">Members</h5> --}}
 
-      <div class="pb-3">
-        
+      {{-- <div class="pb-3">
         <a href="#" class="btn bg-primary text-light button-create">Add Member</a>
-      </div>
+      </div> --}}
 
       <table id="tablePengguna" class="display">
         <thead>
@@ -19,7 +18,7 @@
                 <th>Name</th>
                 <th>Username</th>
                 <th>Phone Number</th>
-                <th>Action</th>
+                {{-- <th>Action</th> --}}
             </tr>
         </thead>
       </table>
@@ -94,10 +93,12 @@
           }, {
             data: 'phone',
             name: 'Phone'
-          }, {
-            data: 'aksi',
-            name: 'Aksi'
-          }]
+          }
+          // , {
+          //   data: 'aksi',
+          //   name: 'Aksi'
+          // }
+        ]
         });
       });
 
