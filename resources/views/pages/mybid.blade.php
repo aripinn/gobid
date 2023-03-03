@@ -32,16 +32,18 @@
                                 <th class="fw-semibold" style="width: ">Result</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="fw-medium">
                             @foreach ($bids as $bid)
                             <tr>
                                 <td>{{ $bid->auction->id }}</td>
                                 <td>
-                                    <img src="/assets/item-img/{{ $bid->auction->item->image }}" 
-                                        alt="{{ $bid->auction->item->name }}"
-                                        class="rounded"
-                                        style="height: 75px; width: 75px; object-fit: cover">
-                                    <span class="ms-2">{{ $bid->auction->item->name }}</span>
+                                    <a href="/auction/{{ $bid->auction->id }}" class="text-decoration-none text-dark">
+                                        <img src="/assets/item-img/{{ $bid->auction->item->image }}" 
+                                            alt="{{ $bid->auction->item->name }}"
+                                            class="rounded"
+                                            style="height: 75px; width: 75px; object-fit: cover">
+                                        <span class="ms-2">{{ $bid->auction->item->name }}</span>
+                                    </a>
                                 </td>
                                 <td>@rupiah($bid->bid_amount)</td>
                                 <td>{{ $bid->created_at }}</td>
