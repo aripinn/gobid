@@ -6,103 +6,117 @@
   <div class="col-lg-12">
     <div class="row">
 
-      <!-- Lelang Card -->
+      <!-- Auction Card -->
       <div class="col-sm-6 col-md-4">
         <div class="card info-card sales-card">
           <div class="card-body">
-            <h5 class="card-title">Jumlah Lelang</h5>
+            <h5 class="card-title">Auctions</h5>
 
             <div class="d-flex align-items-center">
               <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                 <i class="bi bi-box-seam"></i>
               </div>
               <div class="ps-3">
-                <h6>19</h6>
-                <span class="text-muted small pt-2 ps-1">Total Lelang Berjalan</span>
+                <h6>{{ $auctions->where('status', 'open')->count() }}</h6>
+                <span class="text-muted small pt-2">Items being auctioned</span>
               </div>
             </div>
           </div>
 
         </div>
-      </div><!-- End Lelang Card -->
+      </div><!-- End Auction Card -->
 
-      <!-- Penggunars Card -->
+      <!-- Members Card -->
       <div class="col-sm-6 col-md-4">
 
         <div class="card info-card customers-card">
 
           <div class="card-body">
-            <h5 class="card-title">Pengguna</h5>
+            <h5 class="card-title">Members</h5>
 
             <div class="d-flex align-items-center">
               <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                 <i class="bi bi-people"></i>
               </div>
               <div class="ps-3">
-                <h6>999</h6>
-                <span class="text-muted small pt-2 ps-1">Total Pengguna</span>
+                <h6>{{ $members->count() }}</h6>
+                <span class="text-muted small pt-2">Active members</span>
               </div>
             </div>
 
           </div>
         </div>
 
-      </div><!-- End Pengguna Card -->
+      </div><!-- End Members Card -->
 
-      <!-- Tertinggi Card -->
+      <!-- Bids Card -->
       <div class="col-sm-12 col-md-4">
         <div class="card info-card revenue-card">
 
           <div class="card-body">
-            <h5 class="card-title">Penawaran Tertinggi</h5>
+            <h5 class="card-title">Today's Bids</h5>
 
             <div class="d-flex align-items-center">
               <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                 <i class="bi bi-cash"></i>
               </div>
               <div class="ps-3">
-                <h6>Rp. <span class="harga">20000000</span></h6>
-                <span class="text-muted small pt-2 ps-1">Penawaran tertinggi</span>
+                {{-- <h6>{{ $bids->where('created_at', today())->count() }}</h6> --}}
+                <h6>
+                  {{ $bids->where('created_at', '>=', today())
+                          ->where('created_at', '<', today()->addDay())
+                          ->count() }}
+                  </h6>
+                <span class="text-muted small pt-2">Bids submitted today</span>
               </div>
             </div>
           </div>
 
         </div>
-      </div><!-- End Tertinggi Card -->
+      </div><!-- End Bids Card -->
 
       
     </div>
   </div><!-- End columns -->
   
-  <!-- Penawaran Terbaru -->
+  <!-- Latest Bid -->
   <div class="col-lg-12">
     <div class="card top-selling overflow-auto">
 
       <div class="card-body pb-0">
-        <h5 class="card-title">Penawaran Terbaru</h5>
+        <h5 class="card-title">Latest Bids</h5>
 
+        @if ($bids->count())
         <table class="table table-borderless">
           <thead>
             <tr>
-              <th scope="col">Nama</th>
-              <th scope="col">Barang</th>
-              <th scope="col">Penawaran</th>
-              <th scope="col">Tanggal</th>
+              <th scope="col" style="width: 20%">Bidder</th>
+              <th scope="col" style="width: 35%">Item</th>
+              <th scope="col" style="width: 20%">Bid Amount</th>
+              <th scope="col" style="width: ">Bid Time</th>
             </tr>
           </thead>
           <tbody>
+            @foreach ($bids->take(20) as $bid)
             <tr>
-              <td><a href="#" class="link-dark fw-bold">Septian Padli</a></td>
-              <td><a href="#" class="link-dark fw-bold">SPBU</a></td>
-              <td>Rp. <span class="harga">20000000</span></td>
-              <td class="">2022-02-13</td>
+              <td class="link-dark">{{ $bid->user->name }}</td>
+              <td><a href="/auction/{{ $bid->auction_id }}" class="link-dark fw-semibold">
+                {{ $bid->auction->item->name }}
+              </a></td>
+              <td>@rupiah($bid->bid_amount)</td>
+              <td>{{ $bid->created_at }}</td>
             </tr>
+            @endforeach
           </tbody>
         </table>
 
+        @else
+        <p class="text-center fw-medium fs-3 mt-3 mb-5">No bids found.</p>
+        @endif
       </div>
 
     </div>
-  </div><!-- End Top Selling -->
+    
+  </div><!-- End Latest Bid -->
 </div>
 @endsection
