@@ -39,14 +39,14 @@
     <li class="nav-item">
       <a class="nav-link {{ (request()->is('admin/auctions', 'admin/auctions/*')) ? '' : 'collapsed' }}" href="#">
         <i class="bi bi-menu-button-wide"></i>
-        <span>Auctions</span>
+        <span>Manage Auctions</span>
       </a>
     </li>
     @endcan
     <li class="nav-item">
       <a class="nav-link {{ (request()->is('admin/auctions', 'admin/report/*')) ? '' : 'collapsed' }}" href="#">
         <i class="bi bi-printer"></i>
-        <span>Auction Report</span>
+        <span>Generate Report</span>
       </a>
     </li>
 

@@ -101,6 +101,10 @@
             <tr>
               <td class="link-dark">{{ $bid->user->name }}</td>
               <td><a href="/auction/{{ $bid->auction_id }}" class="link-dark fw-semibold">
+                <img src="/assets/item-img/{{ $bid->auction->item->image }}"
+                  alt="{{ $bid->auction->item->name }}"
+                  class="rounded me-1"
+                  style="height: 35px; width: 35px; object-fit: cover">
                 {{ $bid->auction->item->name }}
               </a></td>
               <td>@rupiah($bid->bid_amount)</td>

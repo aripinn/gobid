@@ -26,7 +26,7 @@
                         <thead>
                             <tr>
                                 <th class="fw-semibold" style="width: 7.5%">ID</th>
-                                <th class="fw-semibold" style="width: 30%">Auction</th>
+                                <th class="fw-semibold" style="width: 35%">Auction</th>
                                 <th class="fw-semibold" style="width: 20%">Bid Amount</th>
                                 <th class="fw-semibold" style="width: 20%">Bid Time</th>
                                 <th class="fw-semibold" style="width: ">Result</th>

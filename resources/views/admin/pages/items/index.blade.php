@@ -42,7 +42,7 @@
             </td>
             {{-- desc, price --}}
             <td>
-              <textarea cols="30" rows="3" class="border border-dark-subtle" style="resize: none" readonly>{{ $item->description }}</textarea>
+              <textarea cols="30" rows="3" class="border-0" style="resize: none" readonly>{{ $item->description }}</textarea>
             </td>
             <td>@rupiah($item->start_price)</td>
             {{-- availability --}}
