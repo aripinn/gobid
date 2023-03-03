@@ -50,12 +50,16 @@ class ItemController extends Controller
 
     public function show(Item $item)
     {
-        return view('admin.pages.items.show', ['item' => $item]);
+        // return view('admin.pages.items.show', ['item' => $item]);
+        return redirect()->route('items.edit', $item);
     }
 
     public function edit(Item $item)
     {
-        return view('items.edit', ['item' => $item]);
+        return view('admin.pages.items.edit', [
+            'title' => 'Edit Item ' . $item->id,
+            'item' => $item,
+        ]);
     }
 
     public function update(Request $request, Item $item)
@@ -63,27 +67,29 @@ class ItemController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
-            'image' => 'required|string',
-            'starting_price' => 'required|numeric',
-            'auction_end_time' => 'required|date',
+            'image' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'start_price' => 'required|numeric',
         ]);
 
+        $input = $request->all();
+
         if ($image = $request->file('image')) {
-            $destinationPath = 'images/';
+            $destinationPath = 'assets/item-img/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
             $image->move($destinationPath, $profileImage);
             $input['image'] = "$profileImage";
         }
 
+        $item->update($input);
 
-        $item->update($validated);
-
-        return redirect()->route('items.show', ['item' => $item->id]);
+        return redirect()->route('items.index')
+                        ->with('success', 'Item '.$item->id.' has been updated.');
     }
 
     public function destroy(Item $item)
     {
         $item->delete();
-        return redirect()->route('items.index');
+        return redirect()->route('items.index')
+                        ->with('success', 'Item '.$item->id.' has been deleted.');
     }
 }

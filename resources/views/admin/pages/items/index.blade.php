@@ -4,6 +4,14 @@
 <section class="section dashboard">
   <div class="card recent-sales">
     <div class="card-body mt-4">
+      {{-- Alert --}}
+      @if (session()->has('success'))
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      @endif
+      {{-- Add new --}}
       <div class="pb-3">
         <a href="{{ route('items.create') }}" class="btn btn-primary button-create">Add new item</a>
       </div>
@@ -56,7 +64,7 @@
             <td>
               <div class="d-flex justify-content-start gap-2">
                 {{-- edit --}}
-                <a href="#" class="btn btn-primary">
+                <a href="{{ route('items.edit', $item) }}" class="btn btn-primary">
                   <i class="bi bi-pencil-square"></i>
                 </a>
                 {{-- delete --}}
