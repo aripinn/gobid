@@ -30,6 +30,7 @@ use App\Http\Controllers\MyBidController;
 // })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+// require __DIR__.'/adminauth.php';
 
 
 Route::middleware('auth', 'role:Staff,Admin')->group(function () {
@@ -66,7 +67,6 @@ Route::get('/auctions/404', function () {
     return view('pages.auction404');
 });
 
-require __DIR__.'/adminauth.php';
 
 
 
