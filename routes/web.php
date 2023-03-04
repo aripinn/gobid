@@ -3,12 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AuctionController;
+use App\Http\Controllers\MyBidController;
 use App\Http\Controllers\Admin\ItemController;
+use App\Http\Controllers\Admin\AdminAuctionController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\Ajax\UserAjaxController;
 use App\Http\Controllers\Admin\Ajax\AdminAjaxController;
 use App\Http\Controllers\Admin\Ajax\StaffAjaxController;
-use App\Http\Controllers\MyBidController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,8 +51,9 @@ Route::middleware('auth', 'role:Admin')->group(function () {
     // Route::resource('adminAjax', AdminAjaxController::class);
 });
 
-Route::middleware('auth', 'role:staff')->group(function () {
+Route::middleware('auth', 'role:Staff')->group(function () {
     //open/close auction
+    Route::resource('/admin/auctions', AdminAuctionController::class);
 });
 
 // Client

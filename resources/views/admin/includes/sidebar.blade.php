@@ -37,14 +37,14 @@
     <li class="nav-heading">Auctions</li>
     @can('Staff')
     <li class="nav-item">
-      <a class="nav-link {{ (request()->is('admin/auctions', 'admin/auctions/*')) ? '' : 'collapsed' }}" href="#">
+      <a class="nav-link {{ (request()->is('admin/auctions', 'admin/auctions/*')) ? '' : 'collapsed' }}" href="{{ route('auctions.index') }}">
         <i class="bi bi-menu-button-wide"></i>
         <span>Manage Auctions</span>
       </a>
     </li>
     @endcan
     <li class="nav-item">
-      <a class="nav-link {{ (request()->is('admin/auctions', 'admin/report/*')) ? '' : 'collapsed' }}" href="#">
+      <a class="nav-link {{ (request()->is('admin/report', 'admin/report/*')) ? '' : 'collapsed' }}" href="#">
         <i class="bi bi-printer"></i>
         <span>Generate Report</span>
       </a>
