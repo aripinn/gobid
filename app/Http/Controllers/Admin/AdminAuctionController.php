@@ -102,6 +102,7 @@ class AdminAuctionController extends Controller
     public function update(Request $request, Auction $auction)
     {
         $status = $request->status;
+        $winner = $auction->bid->sortByDesc('bid_amount')->first();
 
         // Reopen
         if($status == "failed"){
@@ -118,8 +119,23 @@ class AdminAuctionController extends Controller
 
         // Close
         else if($status == "open"){
-            
-            return redirect()->route('auctions.show')
+            if($winner !== null){
+                $update = [
+                    'user_id' => $winner->user->id,
+                    'end_date' => now(),
+                    'end_price' => $winner->bid_amount,
+                    'status' => 'close',
+                ];
+            }
+            else{
+                $update = [
+                    'end_date' => now(),
+                    'status' => 'failed',
+                ];
+            }
+            $auction->update($update);
+
+            return redirect()->route('auctions.show',$auction)
                         ->with('success', 'Auction ended successfully.');
         }
     }
@@ -134,6 +150,6 @@ class AdminAuctionController extends Controller
     {
         $auction->delete();
         return redirect()->route('auctions.index')
-                        ->with('success', 'Item '.$auction->id.' has been deleted.');
+                        ->with('success', 'Auction '.$auction->id.' has been deleted.');
     }
 }

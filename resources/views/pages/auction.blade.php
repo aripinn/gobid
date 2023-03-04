@@ -47,25 +47,40 @@
 
             {{-- Submit Bid --}}
             <hr>
-            <h5 class="fw-semibold fs-3 mb-3">Bid Now</h5>
-            <form action="#" method="POST">
-              @csrf
-              <div class="input-group input-group-lg">
-                <span class="input-group-text">Rp</span>
-              @auth
-                @can('Member')
-                <input type="number" placeholder="Enter your bid amount" class="form-control">
-                <button type="submit" class="btn btn-primary text-light fw-semibold">Submit Bid</button>
-                @else
-                <input type="number" placeholder="You're not allowed to join this auction" class="form-control text-center" disabled>
-                <button type="submit" class="btn btn-primary text-light fw-semibold" disabled>Submit Bid</button>
-                @endcan
-              @else
-                <input type="number" placeholder="You need to login first" class="form-control text-center" disabled>
-                <button type="submit" class="btn btn-primary text-light fw-semibold" disabled>Submit Bid</button>
-              @endauth
-              </div>
-            </form>
+            @switch($auction->status)
+              @case('open')
+                <h5 class="fw-semibold fs-3 mb-3">Bid Now</h5>
+                <form action="#" method="POST">
+                  @csrf
+                  <div class="input-group input-group-lg">
+                    <span class="input-group-text">Rp</span>
+                  @auth
+                    @can('Member')
+                    <input type="number" placeholder="Enter your bid amount" class="form-control">
+                    <button type="submit" class="btn btn-primary text-light fw-semibold">Submit Bid</button>
+                    @else
+                    <input type="number" placeholder="You're not allowed to join this auction" class="form-control text-center" disabled>
+                    <button type="submit" class="btn btn-primary text-light fw-semibold" disabled>Submit Bid</button>
+                    @endcan
+                  @else
+                    <input type="number" placeholder="You need to login first" class="form-control text-center" disabled>
+                    <button type="submit" class="btn btn-primary text-light fw-semibold" disabled>Submit Bid</button>
+                  @endauth
+                  </div>
+                </form>
+                @break
+              @case('failed')
+                <h5 class="fw-semibold fs-3 mb-3">Winner</h5>
+                <p class="fs-5 fst-italic">No one wins</p>
+                @break
+              @case('close')
+                <h5 class="fw-semibold fs-3 mb-2">Winner</h5>
+                <span class="fs-4">
+                  <i class="bi bi-person-circle"></i>
+                  {{ $bids->first()->user->name }}
+                </span>
+                @break
+            @endswitch
           </div>
         </div>
       </div>

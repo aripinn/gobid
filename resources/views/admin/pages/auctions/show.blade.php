@@ -63,18 +63,22 @@
 
             <div class="row">
               <div class="col-6">
-                  <p class="fw-semibold mb-2">ID {{ $auction->id }}</p>
-                  <p class="fw-semibold mb-1 fs-6">Description</p>
-                  <p class="">{{ $auction->item->description }}</p>
-                  
+                <p class="fw-semibold mb-2">ID {{ $auction->id }}</p>
+                <p class="fw-semibold mb-1 fs-6">Description</p>
+                <p class="">{{ $auction->item->description }}</p>
               </div>
+
               <div class="col-5 offset-1">
-                  <p class="fw-semibold mb-1 fs-6">Start Date</p>
-                  <p class="fw-normal mb-2">{{ $auction->start_date }}</p>
-                  @if ($auction->status != 'open')
-                    <p class="fw-semibold mb-1 fs-6">End Date</p>
-                    <p class="fw-normal mb-2">{{ $auction->end_date }}</p>
-                  @endif
+                @if ($auction->status == 'close')
+                  <p class="fw-semibold mb-1 fs-6">Winner</p>
+                  <p class="fw-normal mb-2">{{ $bids->first()->user->name }}</p>
+                @endif
+                <p class="fw-semibold mb-1 fs-6">Start Date</p>
+                <p class="fw-normal mb-2">{{ $auction->start_date }}</p>
+                @if ($auction->status != 'open')
+                  <p class="fw-semibold mb-1 fs-6">End Date</p>
+                  <p class="fw-normal mb-2">{{ $auction->end_date }}</p>
+                @endif
               </div>
             </div>
 
@@ -106,9 +110,9 @@
                   {{-- Close --}}
                   @case('open')
                     <input type="hidden" name="status" value="open">
-                    <button type="submit" class="btn btn-success" onclick="return confirm('Are you sure want to end this auction? After closing this auction cannot receive any bids.')">
+                    <button type="submit" class="btn btn-success" onclick="return confirm('Are you sure want to close this auction? After closing, this auction cannot receive any bids.')">
                       <i class="bi bi-x-lg"></i>
-                      End
+                      Close
                     </button>
                     @break
                       
