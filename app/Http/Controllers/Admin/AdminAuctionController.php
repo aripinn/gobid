@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Auction;
+use App\Models\Item;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -17,7 +18,7 @@ class AdminAuctionController extends Controller
     {
         return view('admin.pages.auctions.index',[
             'title' => 'Auctions',
-            'auctions' => Auction::paginate(24),
+            'auctions' => Auction::latest()->paginate(24),
         ]);
     }
 
@@ -28,7 +29,12 @@ class AdminAuctionController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.auctions.create',[
+            'title' => 'Start New Auction',
+            'items' => Item::whereNotIn('id', function($query){
+                $query->select('item_id')->from('auctions');
+            })->latest()->paginate(25),
+        ]);
     }
 
     /**
@@ -39,7 +45,22 @@ class AdminAuctionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $item_id = $request->item_id;
+
+        $count = Auction::where('item_id', $item_id)->count();
+        if ($count > 0) {
+            return redirect()->route('auctions.index')
+                        ->with('failed','This item has been auctioned.');
+        }
+
+        Auction::create([
+            'item_id' => $item_id,
+            'start_date' => now(),
+            'status' => 'open',
+        ]);
+
+        return redirect()->route('auctions.index')
+                        ->with('success','Auction started successfully.');
     }
 
     /**
