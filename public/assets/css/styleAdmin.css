@@ -1,3 +1,12 @@
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+          line-clamp: 2; 
+  -webkit-box-orient: vertical;
+}
+
 /**
 * Template Name: NiceAdmin - v2.5.0
 * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
@@ -13,7 +22,7 @@
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif !important;
   background: #f6f9ff;
   color: #444444;
 }
@@ -253,15 +262,15 @@ h6 {
   padding: 15px;
 }
 
-.card-title {
+.card-title-custom {
   padding: 20px 0 15px 0;
   font-size: 18px;
   font-weight: 500;
   color: #012970;
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
-.card-title span {
+.card-title-custom span {
   color: #899bbd;
   font-size: 14px;
   font-weight: 400;
@@ -278,7 +287,7 @@ h6 {
 /* Alerts */
 .alert-heading {
   font-weight: 500;
-  font-family: "Poppins", sans-serif;
+  font-family: "Inter", sans-serif;
   font-size: 20px;
 }
 
@@ -380,9 +389,9 @@ h6 {
 }
 
 @media (min-width: 1200px) {
-  .logo {
+  /* .logo {
     width: 280px;
-  }
+  } */
 }
 
 .logo img {
@@ -1051,7 +1060,7 @@ h6 {
   font-size: 15px;
 }
 
-.profile .profile-overview .card-title {
+.profile .profile-overview .card-title-custom {
   color: #012970;
 }
 

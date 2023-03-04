@@ -49,12 +49,12 @@
             <td>
               @isset($item->auction->status)
                 @switch($item->auction->status)
-                  @case('open')
-                    <div class="badge bg-warning p-2 fw-normal" style="font-size: 14px">Auctioned</div>
-                    @break
-                  @case('close')
-                    <div class="badge bg-danger p-2 fw-normal" style="font-size: 14px">Sold</div>
-                    @break
+                @case('close')
+                  <div class="badge bg-danger p-2 fw-normal" style="font-size: 14px">Sold</div>
+                  @break
+                @default
+                  <div class="badge bg-warning p-2 fw-normal" style="font-size: 14px">Auctioned</div>
+                  @break
                 @endswitch
               @else
                 <div class="badge bg-success p-2 fw-normal" style="font-size: 14px">Available</div>

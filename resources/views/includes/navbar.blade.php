@@ -19,9 +19,11 @@
           <li class="nav-item">
             <a class="nav-link fw-medium" href="/auctions">Auctions</a>
           </li>
+          @auth
           <li class="nav-item">
             <a class="nav-link fw-medium" href="/mybid">My Bid</a>
           </li>
+          @endauth
         </ul>
         {{-- right elements --}}
         <div class="d-flex align-items-center gap-3">
