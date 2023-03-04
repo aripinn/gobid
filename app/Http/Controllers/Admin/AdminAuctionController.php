@@ -102,6 +102,7 @@ class AdminAuctionController extends Controller
     public function update(Request $request, Auction $auction)
     {
         $status = $request->status;
+        $bids = Bid::where('auction_id', $auction->id)->get();
         $winner = $auction->bid->sortByDesc('bid_amount')->first();
 
         // Reopen
@@ -134,6 +135,12 @@ class AdminAuctionController extends Controller
                 ];
             }
             $auction->update($update);
+
+            // Set bids result
+            foreach ($bids as $bid){
+                $bid->update(['result' => 'lose']);
+            }
+            $winner->update(['result' => 'win']);
 
             return redirect()->route('auctions.show',$auction)
                         ->with('success', 'Auction ended successfully.');

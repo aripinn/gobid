@@ -60,8 +60,8 @@ Route::middleware('auth', 'role:Staff')->group(function () {
 Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/auctions', [AuctionController::class, 'index']);
-
-Route::get('/auction/{auction}', [AuctionController::class, 'show']);
+Route::get('/auction/{auction}', [AuctionController::class, 'show'])->name('auction-show');
+Route::post('/auction/{auction}', [AuctionController::class, 'store'])->name('auction-store');
 
 Route::get('/mybid', [MyBidController::class, 'index']);
 
