@@ -6,6 +6,8 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Item;
 use App\Models\Auction;
+use App\Models\User;
+use App\Models\Bid;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,20 +18,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-
-
-        // \App\Models\User::create([
-        //     'name'=>'User',
-        //     'Email' => 'user@user.com',
-        //     'password'=>bcrypt('password')
-        // ]);
-
         $this->call([
             UserSeeder::class,
         ]);
 
-        Item::factory(100)->create();
-        Auction::factory(50)->create();
+        Item::factory(25)->create();
+        Auction::factory(20)->create();
+        User::factory(75)->create();
+        Bid::factory(100)->create();
     }
 }
