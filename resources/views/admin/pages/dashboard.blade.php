@@ -8,7 +8,7 @@
 
       <!-- Auction Card -->
       <div class="col-sm-6 col-md-4">
-        <div class="card info-card sales-card">
+        <div class="card info-card sales-card pt-3">
           <div class="card-body">
             <h5 class="card-title">Auctions</h5>
 
@@ -29,7 +29,7 @@
       <!-- Members Card -->
       <div class="col-sm-6 col-md-4">
 
-        <div class="card info-card customers-card">
+        <div class="card info-card customers-card pt-3">
 
           <div class="card-body">
             <h5 class="card-title">Members</h5>
@@ -51,7 +51,7 @@
 
       <!-- Bids Card -->
       <div class="col-sm-12 col-md-4">
-        <div class="card info-card revenue-card">
+        <div class="card info-card revenue-card pt-3">
 
           <div class="card-body">
             <h5 class="card-title">Today's Bids</h5>
@@ -83,7 +83,7 @@
   <div class="col-lg-12">
     <div class="card top-selling overflow-auto">
 
-      <div class="card-body pb-0">
+      <div class="card-body pt-3">
         <h5 class="card-title">Latest Bids</h5>
 
         @if ($bids->count())

@@ -55,7 +55,7 @@
             <span class="ms-1">1 hari</span>
           </div> --}}
           {{-- Name --}}
-          <p class="card-title fw-medium mb-1 fs-5 truncate">
+          <p class="card-title fw-medium mb-1 fs-5 truncate" style="height: 60px">
             {{ $auction->item->name }}
           </p>
           {{-- Current Bid --}}

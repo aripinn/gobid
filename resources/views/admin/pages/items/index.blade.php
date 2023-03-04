@@ -73,7 +73,7 @@
                 <form action="{{ route('items.destroy', $item->id) }}" method="POST" class="d-inline-block">
                   @csrf
                   @method('DELETE')
-                  <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item?')">
+                  <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure want to delete this item?')">
                     <i class="bi bi-trash3"></i>
                   </button>
                 </form>
