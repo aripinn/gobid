@@ -20,7 +20,7 @@ return new class extends Migration
             $table->dateTime('start_date');
             $table->dateTime('end_date')->nullable();
             $table->bigInteger('end_price')->nullable();
-            $table->enum('status', ['open','close']);
+            $table->enum('status', ['open','close','failed']);
             $table->timestamps();
         });
     }
