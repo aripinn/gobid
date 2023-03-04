@@ -7,7 +7,7 @@
 
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>{{ $title }} - GoBid</title>
+  <title>{{ $title }} | GoBid</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
