@@ -14,7 +14,7 @@
     <title>@yield('title') | GoBid</title>
 </head>
 <body>
-    <div class="container-fluid px-5">
+    <div class="bg container-fluid px-5">
         @yield('app')
     </div>
     
