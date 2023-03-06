@@ -21,7 +21,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="/assets/vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+  {{-- <link href="/assets/vendor/bootstrap/css/bootstrap.css" rel="stylesheet"> --}}
+  <link href="/assets/css/bootstrap.css" rel="stylesheet">
   <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="/assets/vendor/boxicons/css/boxicons.css" rel="stylesheet">
   <link href="/assets/vendor/quill/quill.snow.css" rel="stylesheet">

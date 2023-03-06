@@ -10,7 +10,7 @@
       <div class="col-sm-6 col-md-4">
         <div class="card info-card sales-card pt-3">
           <div class="card-body">
-            <h5 class="card-title">Auctions</h5>
+            <h5 class="card-title fw-medium">Auctions</h5>
 
             <div class="d-flex align-items-center">
               <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -32,7 +32,7 @@
         <div class="card info-card customers-card pt-3">
 
           <div class="card-body">
-            <h5 class="card-title">Members</h5>
+            <h5 class="card-title fw-medium">Members</h5>
 
             <div class="d-flex align-items-center">
               <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -54,7 +54,7 @@
         <div class="card info-card revenue-card pt-3">
 
           <div class="card-body">
-            <h5 class="card-title">Today's Bids</h5>
+            <h5 class="card-title fw-medium">Today's Bids</h5>
 
             <div class="d-flex align-items-center">
               <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -84,23 +84,23 @@
     <div class="card top-selling overflow-auto">
 
       <div class="card-body pt-3">
-        <h5 class="card-title">Latest Bids</h5>
+        <h5 class="card-title fw-medium">Latest Bids</h5>
 
         @if ($bids->count())
         <table class="table table-borderless">
           <thead>
             <tr>
               <th scope="col" style="width: 20%">Bidder</th>
-              <th scope="col" style="width: 35%">Item</th>
-              <th scope="col" style="width: 20%">Bid Amount</th>
-              <th scope="col" style="width: ">Bid Time</th>
+              <th scope="col" style="width: ">Item</th>
+              <th scope="col" style="width: 15%">Bid Amount</th>
+              <th scope="col" style="width: 17.5%">Bid Time</th>
             </tr>
           </thead>
           <tbody>
             @foreach ($bids->take(20) as $bid)
             <tr>
               <td class="link-dark">{{ $bid->user->name }}</td>
-              <td><a href="/auction/{{ $bid->auction_id }}" class="link-dark fw-semibold">
+              <td><a href="{{ route('auctions.show', $bid->auction_id) }}" class="link-dark fw-medium">
                 <img src="/assets/item-img/{{ $bid->auction->item->image }}"
                   alt="{{ $bid->auction->item->name }}"
                   class="rounded me-1"
