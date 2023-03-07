@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\Ajax\UserAjaxController;
 use App\Http\Controllers\Admin\Ajax\AdminAjaxController;
 use App\Http\Controllers\Admin\Ajax\StaffAjaxController;
+use App\Http\Controllers\PDFController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,6 +70,4 @@ Route::get('/auctions/404', function () {
     return view('pages.auction404');
 });
 
-
-
-
+Route::get('/report', [PDFController::class, 'auction'])->name('pdf-auction');
