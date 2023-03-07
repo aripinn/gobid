@@ -67,21 +67,30 @@
     <table>
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Bidder Name</th>
-                <th>Bid Amount</th>
-                <th>Bid Time</th>
-                <th>Status</th>
+                <th style="width: 7.5%">#</th>
+                <th style="width: 30%">Bidder Name</th>
+                <th style="width: 22.5%">Bid Amount</th>
+                <th style="width: 27.5%">Bid Time</th>
+                <th style="width: ">Status</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($bids as $bid)
             <tr>
-                <td>{{ $bid->id }}</td>
+                <td>{{ $loop->iteration }}</td>
                 <td>{{ $bid->user->name }}</td>
                 <td>@rupiah($bid->bid_amount)</td>
                 <td>{{ $bid->created_at }}</td>
-                <td>{{ $bid->result }}</td>
+                <td>
+                  @switch($bid->result)
+                    @case('win')
+                      <span style="color: green; font-weight: bold">Win</span>
+                      @break
+                    @case('lose')
+                      <span style="color: red; font-weight: bold">Lose</span>
+                      @break
+                  @endswitch
+                </td>
             </tr>
             @endforeach
         </tbody>

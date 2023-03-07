@@ -10,7 +10,7 @@ use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\Ajax\UserAjaxController;
 use App\Http\Controllers\Admin\Ajax\AdminAjaxController;
 use App\Http\Controllers\Admin\Ajax\StaffAjaxController;
-use App\Http\Controllers\PDFController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,18 +32,19 @@ use App\Http\Controllers\PDFController;
 // })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
-// require __DIR__.'/adminauth.php';
 
 
+// Staff or Admin
 Route::middleware('auth', 'role:Staff,Admin')->group(function () {
-
     Route::get('/admin', [PageController::class, 'dashboard'])->name('dashboard');
     Route::get('/admin/members', [PageController::class, 'user'])->name('dashboard-users');
     
     Route::resource('userAjax', UserAjaxController::class);
     Route::resource('/admin/items', ItemController::class);
+    
 });
 
+// Admin
 Route::middleware('auth', 'role:Admin')->group(function () {
     Route::get('/admin/staffs', [PageController::class, 'staff'])->name('dashboard-staff');
     // Route::get('/admin/admins', [PageController::class, 'admin'])->name('dashboard-admin');
@@ -52,22 +53,19 @@ Route::middleware('auth', 'role:Admin')->group(function () {
     // Route::resource('adminAjax', AdminAjaxController::class);
 });
 
+// Staff
 Route::middleware('auth', 'role:Staff')->group(function () {
-    //open/close auction
     Route::resource('/admin/auctions', AdminAuctionController::class);
 });
 
-// Client
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/admin/report/{auction}', [ReportController::class, 'auction'])->name('report.auction');
 
+Route::get('/', [HomeController::class, 'index']);
 Route::get('/auctions', [AuctionController::class, 'index']);
 Route::get('/auction/{auction}', [AuctionController::class, 'show'])->name('auction-show');
 Route::post('/auction/{auction}', [AuctionController::class, 'store'])->name('auction-store');
-
-Route::get('/mybid', [MyBidController::class, 'index']);
+Route::get('/mybid', [MyBidController::class, 'index'])->middleware('auth');
 
 Route::get('/auctions/404', function () {
-    return view('pages.auction404');
+    return view('pages.auction404');    
 });
-
-Route::get('/report', [PDFController::class, 'auction'])->name('pdf-auction');
