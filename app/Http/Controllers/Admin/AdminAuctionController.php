@@ -127,21 +127,21 @@ class AdminAuctionController extends Controller
                     'end_price' => $winner->bid_amount,
                     'status' => 'close',
                 ];
+                // Set bids result
+                foreach ($bids as $bid){
+                    $bid->update(['result' => 'lose']);
+                }
+                $winner->update(['result' => 'win']);
             }
+            
             else{
                 $update = [
                     'end_date' => now(),
                     'status' => 'failed',
                 ];
             }
+
             $auction->update($update);
-
-            // Set bids result
-            foreach ($bids as $bid){
-                $bid->update(['result' => 'lose']);
-            }
-            $winner->update(['result' => 'win']);
-
             return redirect()->route('auctions.show',$auction)
                         ->with('success', 'Auction ended successfully.');
         }
