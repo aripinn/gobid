@@ -44,9 +44,9 @@
     </li>
     @endcan
     <li class="nav-item">
-      <a class="nav-link {{ (request()->is('admin/report', 'admin/report/*')) ? '' : 'collapsed' }}" href="#">
+      <a class="nav-link {{ (request()->is('admin/report', 'admin/report/*')) ? '' : 'collapsed' }}" href="{{ route('report.index') }}">
         <i class="bi bi-printer"></i>
-        <span>Generate Report</span>
+        <span>Report</span>
       </a>
     </li>
 

@@ -58,6 +58,7 @@ Route::middleware('auth', 'role:Staff')->group(function () {
     Route::resource('/admin/auctions', AdminAuctionController::class);
 });
 
+Route::get('/admin/report', [ReportController::class, 'index'])->name('report.index');
 Route::get('/admin/report/{auction}', [ReportController::class, 'auction'])->name('report.auction');
 
 Route::get('/', [HomeController::class, 'index']);

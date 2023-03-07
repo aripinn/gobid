@@ -53,8 +53,8 @@
     </div>
 
     <div style="float: right; width: 35%;">
-      <p><strong>Auction Start Date:</strong> {{ $auction->start_date }}</p>
-      <p><strong>Auction End Date:</strong> {{ $auction->end_date }}</p>
+      <p><strong>Start Date:</strong> {{ $auction->start_date }}</p>
+      <p><strong>End Date:</strong> {{ $auction->end_date }}</p>
       <p><strong>Starting price:</strong> @rupiah($auction->item->start_price)</p>
       <p><strong>Final bid:</strong> @rupiah($auction->end_price)</p>
       <p><strong>Winner:</strong> {{ $auction->user->name }}</p>
