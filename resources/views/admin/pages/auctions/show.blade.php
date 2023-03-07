@@ -124,6 +124,13 @@
                       Reopen
                     </button>
                     @break
+                  
+                  @case('close')
+                    <a class="btn btn-success" href="{{ route('report.auction', $auction) }}">
+                      <i class="bi bi-printer"></i>
+                      Generate Report
+                    </a>
+                  @break
                 @endswitch
               </form>
             </div>

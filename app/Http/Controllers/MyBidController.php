@@ -10,10 +10,6 @@ use App\Models\Bid;
 class MyBidController extends Controller
 {
     public function index(){
-        if(!isset(Auth::user()->id)){
-            return redirect('/login');
-        }
-
         // Get highest bid foreach auction
         $bids = Bid::where('user_id', Auth::user()->id)
                     ->whereIn('id', function ($query) {
