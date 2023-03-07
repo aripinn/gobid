@@ -1,12 +1,60 @@
 body {
     font-family: 'Inter', sans-serif !important;
 }
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+.bg {
+    background-image: url("../img/Background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.logo {
+    font-family: 'Alfa Slab One';
+}
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+            line-clamp: 2; 
+    -webkit-box-orient: vertical;
+}
+
+/* .Headline {
+    font-family: 'Alfa Slab One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 68px;
+    text-align: center;
+    color: #FFFFFF;
+    text-shadow: 6px 8px 0px #E88D13;
+}
+
+.Headline_home {
+    font-family: 'Alfa Slab One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 68px;
+    text-align: center;
+    color: #FFFFFF;
+    text-shadow: 6px 8px 0px #328D2A;
+}
+
+.H1_orange {
+    -webkit-text-stroke: 1px #E88D13;
+    -webkit-text-fill-color: white;
+}
+
+.H1_ijo {
+    -webkit-text-stroke: 1px #328D2A;
+    -webkit-text-fill-color: white;
+} */
 
 .divider:after,
 .divider:before {
