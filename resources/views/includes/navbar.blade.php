@@ -14,14 +14,14 @@
       <div class="collapse navbar-collapse ms-2 gap-2" id="navHamburger">
         <ul class="navbar-nav me-auto mb-2 gap-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active fw-medium" aria-current="page" href="/">Home</a>
+            <a class="nav-link fw-medium {{ (request()->is('/')) ? 'active' : '' }}" aria-current="page" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link fw-medium" href="/auctions">Auctions</a>
+            <a class="nav-link fw-medium {{ (request()->is('auctions', 'auction/*')) ? 'active' : '' }}" href="/auctions">Auctions</a>
           </li>
           @auth
           <li class="nav-item">
-            <a class="nav-link fw-medium" href="/mybid">My Bid</a>
+            <a class="nav-link fw-medium {{ (request()->is('mybid')) ? 'active' : '' }}" href="/mybid">My Bid</a>
           </li>
           @endauth
         </ul>
