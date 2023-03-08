@@ -51,7 +51,13 @@
                 <iconify-icon icon="icon-park:gavel" width="34" flip="horizontal"></iconify-icon>
               </div>
               <div class="col ms-2">
-                <span class="card-text text-muted" style="font-size: 12px">Current Bid</span><br>
+                <span class="card-text text-muted" style="font-size: 12px">
+                  @if($auction->status == 'open')
+                  Current Bid
+                  @else
+                  Final Bid
+                  @endif
+                </span><br>
                 <span class="card-text fw-bold fs-6">
                   @if ($auction->bid->count())
                     @rupiah($auction->bid->max('bid_amount'))

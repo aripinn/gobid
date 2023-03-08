@@ -51,7 +51,13 @@
             {{-- Current bid --}}
             <div class="d-flex align-items-center">
               <iconify-icon icon="icon-park:gavel" width="32" flip="horizontal"></iconify-icon>
-              <span class="ms-1 text-black-50 fw-semibold">Current Bid</span>
+              <span class="ms-1 text-black-50 fw-semibold">
+                @if($auction->status == 'open')
+                Current Bid
+                @else
+                Final Bid
+                @endif
+              </span>
             </div>
             <p class="fw-bold fs-4 mb-2">
               @if ($bids->count())
