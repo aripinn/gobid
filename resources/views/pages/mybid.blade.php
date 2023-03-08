@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row d-flex mb-5">
             {{-- Search --}}
-            <div class="card border-dark p-1 my-3 mb-4">
+            {{-- <div class="card border-dark p-1 mt-4">
                 <form action="" method="post" class="d-flex">
                     @csrf
                     <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
@@ -15,10 +15,10 @@
                     <span class="ms-1">Search</span>
                     </button>
                 </form>
-            </div>
+            </div> --}}
 
             {{-- Table --}}
-            <div class="card shadow-sm">
+            <div class="card shadow-sm mt-4">
                 <div div class="table-responsive">
                     <table class="table caption-top align-middle">
                         <h5 class="fw-semibold fs-3 ms-2 my-3">My Bid</h5>

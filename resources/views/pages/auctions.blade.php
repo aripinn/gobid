@@ -9,7 +9,7 @@
 </div>
 
 {{-- Search --}}
-<div class="container">
+{{-- <div class="container">
   <div class="card border-dark p-1 my-3 mb-4">
     <form action="" method="post" class="d-flex">
       @csrf
@@ -20,7 +20,7 @@
       </button>
     </form>
   </div>
-</div>
+</div> --}}
 
 {{-- Cards --}}
 @if ($auctions->count())
