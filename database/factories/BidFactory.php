@@ -19,8 +19,9 @@ class BidFactory extends Factory
         return [
             'user_id' => mt_rand(7, 82),
             'auction_id' => mt_rand(1, 20),
-            'bid_amount' => mt_rand(75000, 9950000),
+            'bid_amount' => mt_rand(75000, 5000000),
             'result' => 'ongoing',
+            'created_at' => fake()->dateTimeBetween('-4 week', '-1 days'),
         ];
     }
 }

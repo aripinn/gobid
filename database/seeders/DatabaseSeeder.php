@@ -22,9 +22,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
         ]);
 
-        Item::factory(25)->create();
-        Auction::factory(20)->create();
+        Item::factory(28)->create();
+        Auction::factory(25)->create();
         User::factory(75)->create();
-        Bid::factory(100)->create();
+        Bid::factory(120)->create();
     }
 }

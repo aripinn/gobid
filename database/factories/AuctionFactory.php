@@ -17,9 +17,10 @@ class AuctionFactory extends Factory
     public function definition()
     {
         return [
-            'item_id' => fake()->unique()->numberBetween(1, 25),
+            'item_id' => fake()->unique()->numberBetween(1, 28),
             'start_date' => fake()->dateTimeBetween('-4 week', '-1 days'),
             'status' => 'open',
+            'created_at' => fake()->dateTimeBetween('-4 week', '-1 days'),
         ];
     }
 }
