@@ -48,7 +48,7 @@
             <!-- Phone input -->
             <div class="form-floating mb-3">
               <input type="number" name="phone" id="phone" class="form-control  @error('phone') is-invalid @enderror" value="{{ old('phone') }}" placeholder="Enter phone number"/>
-              <label class="form-label" for="phone">Phone Number</label>
+              <label class="form-label" for="phone">Phone Number<span class="text-danger">*</span></label>
               @error('phone')
               <div class="invalid-feedback">
                 {{ $message }}
