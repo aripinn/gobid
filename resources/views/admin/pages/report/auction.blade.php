@@ -71,7 +71,7 @@
                 <th style="width: 30%">Bidder Name</th>
                 <th style="width: 22.5%">Bid Amount</th>
                 <th style="width: 27.5%">Bid Time</th>
-                <th style="width: ">Status</th>
+                <th style="width: ">Result</th>
             </tr>
         </thead>
         <tbody>
