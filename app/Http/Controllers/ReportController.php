@@ -28,6 +28,6 @@ class ReportController extends Controller
             'auction' => $auction,
             'bids' => $bids->sortByDesc('bid_amount'),
         ]);
-        return $pdf->download('reportAuction'.$auction->id.'.pdf');
+        return $pdf->download('gobid_report_'.$auction->id.'.pdf');
     }
 }
