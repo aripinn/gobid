@@ -10,9 +10,19 @@ use App\Models\Bid;
 class AuctionController extends Controller
 {
     public function index(){
+        $auctions = Auction::latest();
+
+        if(request('search')){
+            $auctions = Auction::whereIn('item_id', function ($query) {
+                $query->select('id')
+                    ->from('items')
+                    ->where('name', 'LIKE', '%'.request('search').'%');
+            });
+        }
+        
         return view('pages.auctions', [
             'title' => 'All Auctions',
-            'auctions' => Auction::latest()->paginate(24),
+            'auctions' => $auctions->paginate(24)->withQueryString(),
         ]);
     }
 

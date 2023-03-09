@@ -7,9 +7,8 @@
         <div class="row d-flex mb-5">
             {{-- Search --}}
             {{-- <div class="card border-dark p-1 mt-4">
-                <form action="" method="post" class="d-flex">
-                    @csrf
-                    <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
+                <form action="/mybid" class="d-flex">
+                    <input class="form-control me-2" type="text" name="search" placeholder="Search" value="{{ request('search') }}">
                     <button class="btn btn-primary d-flex" type="submit">
                     <iconify-icon icon="ic:outline-search" style="color: white;" width="24"></iconify-icon>
                     <span class="ms-1">Search</span>
@@ -84,6 +83,11 @@
                     </table>
                 </div>
             </div>
+            @if ($bids->count())
+            <div class="mt-3">
+                {{ $bids->links() }}
+            </div>
+            @endif
         </div>
     </div>
 </section>

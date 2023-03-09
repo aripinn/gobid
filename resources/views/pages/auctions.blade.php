@@ -9,18 +9,17 @@
 </div>
 
 {{-- Search --}}
-{{-- <div class="container">
+<div class="container">
   <div class="card border-dark p-1 my-3 mb-4">
-    <form action="" method="post" class="d-flex">
-      @csrf
-      <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
+    <form action="/auctions" class="d-flex">
+      <input class="form-control me-2" type="text" name="search" placeholder="Search" value="{{ request('search') }}">
       <button class="btn btn-primary d-flex" type="submit">
         <iconify-icon icon="ic:outline-search" style="color: white;" width="24"></iconify-icon>
         <span class="ms-1">Search</span>
       </button>
     </form>
   </div>
-</div> --}}
+</div>
 
 {{-- Cards --}}
 @if ($auctions->count())
@@ -76,6 +75,8 @@
   </div>
 </section>
 @else
-  <p class="text-center fs-3 my-5">No auction found.</p>
+<div class="my-5">
+  <img class="d-block mx-auto img-fluid" src="{{ asset('assets/img/auctionsNotFound.png') }}" alt="No auctions found.">
+</div>
 @endif
 @endsection 
