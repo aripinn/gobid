@@ -27,6 +27,11 @@ class AuctionController extends Controller
     }
 
     public function store(Request $request, Auction $auction){
+        if($auction->status != 'open'){
+            return redirect()->route('auction-show', $auction)
+                        ->with('failed' , 'This auction already been closed.');
+        }
+
         $bids = Bid::where('auction_id',$auction->id)->get();
         if($bids->count()){
             $minBid = $auction->bid->max('bid_amount') + 1;

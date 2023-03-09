@@ -53,24 +53,31 @@
 
             {{-- Submit Bid --}}
             <hr>
+            
+            {{-- Alert --}}
+            @if (session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              {{ session('success') }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
+            @if (session()->has('failed'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              {{ session('failed') }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @endif
+            @error('bid_amount')
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              {{ $message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            @enderror
+
+            {{-- Form --}}
             @switch($auction->status)
               @case('open')
                 <h5 class="fw-semibold fs-3 mb-3">Bid Now</h5>
-
-                {{-- Alert --}}
-                @if (session()->has('success'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                  {{ session('success') }}
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                @endif
-                @error('bid_amount')
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                  {{ $message }}
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                @enderror
-
                 <form action="{{ route('auction-store',$auction) }}" method="POST">
                   @csrf
                   <div class="input-group input-group-lg">
